@@ -1,6 +1,6 @@
 site:
   name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  site: 'https://cycling-club-website.zsun-racing-team.workers.dev'
   base: '/'
   trailingSlash: false
 
