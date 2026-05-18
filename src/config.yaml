@@ -1,6 +1,6 @@
 site:
   name: AstroWind
-  site: 'https://zsun-club-website.zsun-racing-team.workers.dev'
+  site: 'https://team-website.zsun-racing-team.workers.dev'
   base: '/'
   trailingSlash: false
 
