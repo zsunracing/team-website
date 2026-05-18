@@ -1,8 +1,7 @@
 {
-  "name": "zsun-racing-team",
+  "name": "astrowind-site",
   "compatibility_date": "2026-05-18",
   "assets": {
-    "directory": "./dist",
-    "binding": "ASSETS"
+    "directory": "./dist"
   }
 }
