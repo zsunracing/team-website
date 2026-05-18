@@ -1,7 +1,6 @@
 {
   "name": "zsun-racing-team",
   "compatibility_date": "2026-05-18",
-  "main": "node_modules/wrangler/templates/static-asset-worker.js",
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS"

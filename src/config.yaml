@@ -1,5 +1,5 @@
 site:
-  name: ZSUN
+  name: ZSUN TEST
   site: 'https://team-website.zsun-racing-team.workers.dev'
   base: '/'
   trailingSlash: false
