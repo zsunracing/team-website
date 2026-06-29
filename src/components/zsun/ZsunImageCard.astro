@@ -1,0 +1,85 @@
+---
+import Image from "~/components/common/Image.astro";
+import Button from "~/components/ui/Button.astro";
+
+export interface Props {
+  title: string;
+  text: string;
+  href?: string;
+  actionText?: string;
+  image?: string;
+  alt?: string;
+  visualLabel?: string;
+  variant?: "red" | "orange" | "gold";
+}
+
+const {
+  title,
+  text,
+  href,
+  actionText,
+  image,
+  alt = "",
+  visualLabel = title,
+  variant = "red",
+} = Astro.props;
+---
+
+{
+  href ? (
+    <a
+      class:list={["zsun-image-card", `zsun-image-card-${variant}`]}
+      href={href}
+    >
+      <div class="zsun-image-card-visual">
+        {image ? (
+          <Image
+            src={image}
+            alt={alt}
+            width={720}
+            height={420}
+            widths={[400, 720, 960]}
+            layout="fullWidth"
+          />
+        ) : (
+          <div class="zsun-generated-visual" aria-hidden="true">
+            <span>{visualLabel}</span>
+          </div>
+        )}
+      </div>
+      <div class="zsun-image-card-body">
+        <h3>{title}</h3>
+        <p>{text}</p>
+        {actionText && (
+          <span class="btn btn-secondary btn-small">{actionText}</span>
+        )}
+      </div>
+    </a>
+  ) : (
+    <article class:list={["zsun-image-card", `zsun-image-card-${variant}`]}>
+      <div class="zsun-image-card-visual">
+        {image ? (
+          <Image
+            src={image}
+            alt={alt}
+            width={720}
+            height={420}
+            widths={[400, 720, 960]}
+            layout="fullWidth"
+          />
+        ) : (
+          <div class="zsun-generated-visual" aria-hidden="true">
+            <span>{visualLabel}</span>
+          </div>
+        )}
+      </div>
+      <div class="zsun-image-card-body">
+        <h3>{title}</h3>
+        <p>{text}</p>
+        {actionText && (
+          <Button text={actionText} variant="secondary" class="btn-small" />
+        )}
+      </div>
+    </article>
+  )
+}

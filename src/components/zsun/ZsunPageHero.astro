@@ -1,0 +1,40 @@
+---
+import Button from "~/components/ui/Button.astro";
+import type { CallToAction } from "~/types";
+
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  actions?: Array<CallToAction>;
+  class?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  lead,
+  actions = [],
+  class: className = "",
+} = Astro.props;
+---
+
+<section class:list={["zsun-page-hero", className]}>
+  <div class="zsun-container zsun-page-hero-inner">
+    <div>
+      {eyebrow && <span class="zsun-eyebrow">{eyebrow}</span>}
+      <h1 set:html={title} />
+      {lead && <p class="zsun-lead">{lead}</p>}
+      {
+        actions.length > 0 ? (
+          <div class="zsun-action-row">
+            {actions.map((action) => (
+              <Button {...action} />
+            ))}
+          </div>
+        ) : null
+      }
+    </div>
+    <slot name="visual" />
+  </div>
+</section>

@@ -1,0 +1,43 @@
+---
+export interface Props {
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  lead?: string;
+  variant?: "default" | "alt";
+  class?: string;
+}
+
+const {
+  id,
+  eyebrow,
+  title,
+  lead,
+  variant = "default",
+  class: className = "",
+} = Astro.props;
+---
+
+<section
+  id={id}
+  class:list={[
+    "zsun-section",
+    { "zsun-section-alt": variant === "alt" },
+    className,
+  ]}
+>
+  <div class="zsun-container">
+    {
+      eyebrow || title || lead ? (
+        <div class="zsun-section-head">
+          <div>
+            {eyebrow && <span class="zsun-eyebrow">{eyebrow}</span>}
+            {title && <h2>{title}</h2>}
+          </div>
+          {lead && <p>{lead}</p>}
+        </div>
+      ) : null
+    }
+    <slot />
+  </div>
+</section>

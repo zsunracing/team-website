@@ -1,0 +1,46 @@
+---
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  pills?: string[];
+  visualLabel?: string;
+  class?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  lead,
+  pills = [],
+  visualLabel = "ZSUN",
+  class: className = "",
+} = Astro.props;
+---
+
+<section class:list={["zsun-feature-band", className]}>
+  <div>
+    {eyebrow && <span class="zsun-eyebrow">{eyebrow}</span>}
+    <h2>{title}</h2>
+    {lead && <p class="zsun-lead">{lead}</p>}
+    {
+      pills.length > 0 ? (
+        <div class="zsun-pill-row">
+          {pills.map((pill) => (
+            <span class="zsun-pill">{pill}</span>
+          ))}
+        </div>
+      ) : null
+    }
+    <slot />
+  </div>
+  <div class="zsun-feature-visual" aria-hidden="true">
+    <div class="zsun-visual-lines">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <strong>{visualLabel}</strong>
+  </div>
+</section>

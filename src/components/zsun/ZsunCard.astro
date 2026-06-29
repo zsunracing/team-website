@@ -1,0 +1,22 @@
+---
+import Button from "~/components/ui/Button.astro";
+import type { CallToAction } from "~/types";
+
+export interface Props {
+  eyebrow?: string;
+  title?: string;
+  text?: string;
+  action?: CallToAction;
+  class?: string;
+}
+
+const { eyebrow, title, text, action, class: className = "" } = Astro.props;
+---
+
+<article class:list={["zsun-card", className]}>
+  {eyebrow && <span class="zsun-card-eyebrow">{eyebrow}</span>}
+  {title && <h3>{title}</h3>}
+  {text && <p>{text}</p>}
+  <slot />
+  {action && <Button {...action} class="mt-4" />}
+</article>
