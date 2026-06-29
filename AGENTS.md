@@ -1,5 +1,21 @@
 # AstroWind Agent Instructions
 
+## ZSUNR Site Rebuild Context
+
+Prototype to rebuild:
+https://zsun-web-site.lalieustewart.workers.dev/
+
+Goal:
+Rebuild the prototype as a clean, maintainable Astro site using this repo's existing AstroWind/Astro/Tailwind structure.
+
+Rules:
+- Do not push or commit unless explicitly asked.
+- Prefer staged, reviewable changes.
+- Keep components reusable.
+- Do not add dependencies without asking.
+- Preserve build stability with `npm run build` and `npm run check`.
+- Plan first, then edit in small stages.
+
 ## Project Overview
 
 AstroWind is a free, open-source website template built with **Astro v6** and **Tailwind CSS v4**. It generates a fully static site optimized for performance, SEO, and accessibility.
