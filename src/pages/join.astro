@@ -1,0 +1,159 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import Button from "~/components/ui/Button.astro";
+import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
+import ZsunSection from "~/components/zsun/ZsunSection.astro";
+
+const metadata = {
+  title: "Join",
+  description:
+    "Join ZSUN through Discord and the Zwift Club so you can find rides, racing support and community activity more easily.",
+};
+
+const discordBenefits = [
+  "Live voice chat during many social rides",
+  "Team voice during racing and TTTs",
+  "Text channels for race organisation and team communication",
+  "A place to ask questions, listen in, or join the conversation",
+];
+
+const clubSteps = [
+  "Use the Zwift Companion app on your phone or tablet",
+  "Go to Clubs and select All Clubs",
+  "Search for ZSUN",
+  "Open the ZSUN club result and join from there",
+];
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="announcement"></Fragment>
+
+  <ZsunPageHero
+    eyebrow="Start here"
+    title='<span class="zsun-gradient-text">Join ZSUN</span>'
+    lead="Join ZSUN in two simple steps: connect with us on Discord for communication, then join the ZSUN Zwift Club through the Companion app so you can find club activity more easily."
+    actions={[
+      {
+        text: "See the two joining steps",
+        href: "#join-options",
+        variant: "primary",
+      },
+      { text: "View club rides", href: "/ride", variant: "secondary" },
+    ]}
+    class="zsun-page-hero-with-visual"
+  >
+    <div
+      slot="visual"
+      class="zsun-hero-visual zsun-hero-visual-join"
+      aria-hidden="true"
+    >
+      <div class="zsun-hero-step">
+        <strong>1</strong>
+        <span>Join Discord</span>
+      </div>
+      <div class="zsun-hero-step">
+        <strong>2</strong>
+        <span>Join Zwift Club</span>
+      </div>
+    </div>
+  </ZsunPageHero>
+
+  <ZsunSection id="join-options" title="Two simple joining steps">
+    <div class="zsun-join-grid">
+      <article class="zsun-join-card">
+        <div class="zsun-join-media zsun-join-media-discord" aria-hidden="true">
+          <div class="zsun-device-frame">
+            <span class="zsun-device-label">Discord</span>
+            <div class="zsun-device-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <div class="zsun-join-body">
+          <span class="zsun-eyebrow">Communication</span>
+          <h3>Join our communication service</h3>
+          <p>
+            Discord is where ZSUN communicates during and around club activity.
+            It is easy to sign up and only takes a few minutes.
+          </p>
+          <ul class="zsun-checklist">
+            {discordBenefits.map((benefit) => <li>{benefit}</li>)}
+          </ul>
+          <p class="zsun-join-note">
+            If you are new, you can simply join and listen. Many riders start
+            there before joining in.
+          </p>
+          <div class="zsun-action-row">
+            <Button
+              text="Join our communication service"
+              href="https://zsunr.com/discord"
+              variant="primary"
+              target="_blank"
+            />
+          </div>
+        </div>
+      </article>
+
+      <article class="zsun-join-card">
+        <div class="zsun-join-media zsun-join-media-club" aria-hidden="true">
+          <div class="zsun-device-stack">
+            <div class="zsun-device-frame">
+              <span class="zsun-device-label">Search clubs</span>
+              <div class="zsun-search-chip">ZSUN</div>
+            </div>
+            <div class="zsun-device-frame zsun-device-frame-accent">
+              <span class="zsun-device-label">Club result</span>
+              <strong>ZSUN</strong>
+              <small>Zwift Club</small>
+            </div>
+          </div>
+        </div>
+        <div class="zsun-join-body">
+          <span class="zsun-eyebrow">Zwift Club</span>
+          <h3>Join our Zwift Club via the Companion app</h3>
+          <p>
+            Join the ZSUN club through the Zwift Companion app on your mobile
+            device. This is the simplest way to connect yourself to the club
+            inside the Zwift ecosystem and makes it easier to find ZSUN
+            activity.
+          </p>
+          <ol class="zsun-number-list">
+            {clubSteps.map((step) => <li>{step}</li>)}
+          </ol>
+          <p class="zsun-join-note">
+            Once you have joined, the club becomes easier to find inside
+            Companion and links your mobile app view to the wider ZSUN club
+            presence in Zwift.
+          </p>
+        </div>
+      </article>
+    </div>
+  </ZsunSection>
+
+  <ZsunSection variant="alt">
+    <div class="zsun-join-support">
+      <div>
+        <span class="zsun-eyebrow">Racing next steps</span>
+        <h2>Racing registrations come later</h2>
+        <p>
+          If you want to race, extra registrations such as ZwiftPower and WTRL
+          are explained on the <a href="/race" class="zsun-inline-link"
+            >Race page</a
+          >.
+        </p>
+        <p>
+          For most new riders, Discord and the Zwift Club are the right starting
+          point.
+        </p>
+      </div>
+      <aside class="zsun-callout-card">
+        <strong>Not sure where to start?</strong>
+        <p>
+          Join Discord first and ask. We'll point you in the right direction.
+        </p>
+      </aside>
+    </div>
+  </ZsunSection>
+</Layout>

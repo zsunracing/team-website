@@ -1,0 +1,285 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import Button from "~/components/ui/Button.astro";
+import ZsunCard from "~/components/zsun/ZsunCard.astro";
+import ZsunFeatureBand from "~/components/zsun/ZsunFeatureBand.astro";
+import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
+import ZsunSection from "~/components/zsun/ZsunSection.astro";
+
+const metadata = {
+  title: "Ride",
+  description:
+    "Ride with ZSUN through friendly Zwift group rides, endurance builders, social miles and supportive community events.",
+};
+
+const audiences = [
+  {
+    title: "New or returning riders",
+    text: "Start steady, learn group riding and build confidence without pressure.",
+  },
+  {
+    title: "Social riders",
+    text: "Enjoy friendly chat, shared motivation and regular community rides.",
+  },
+  {
+    title: "Endurance builders",
+    text: "Use longer Zone 2 rides to build aerobic fitness and group-riding skill.",
+  },
+  {
+    title: "Stronger riders",
+    text: "Take on faster training rides where the aim is to hold on and improve.",
+  },
+  {
+    title: "Women-only riding",
+    text: "Join a supportive ladies-only space for female Zwifters.",
+  },
+  {
+    title: "Seasonal events",
+    text: "Look out for winter rides that run through the colder months.",
+  },
+];
+
+const featuredRides = [
+  {
+    tag: "Gentle pace",
+    title: "Back to Basics",
+    text: "A calm, confidence-building ride for newer riders, riders returning after a break, recovery days or anyone who wants steady social miles.",
+    pills: ["~60 mins", "1.2-1.6 w/kg", "Open to all"],
+  },
+  {
+    tag: "Friendly social",
+    title: "vFUN Social Ride",
+    text: "A relaxed weekly social ride built around good vibes, easy chat and steady pacing from the yellow beacon.",
+    pills: ["Weekly", "1.7-1.9 w/kg", "~60 mins"],
+  },
+  {
+    tag: "Weekend social",
+    title: "Saturday Social",
+    text: "A friendly, inclusive group ride with supportive group riding, conversation and community focus.",
+    pills: ["Saturday", "~60 mins", "1.7-1.9 w/kg"],
+  },
+  {
+    tag: "Flagship ride",
+    title: "Sunday Social",
+    text: "A long-standing ZSUN group ride with multiple pace options, leaders and sweepers where available, and a strong community feel.",
+    pills: ["Sunday", "60-120 mins", "2 pens"],
+  },
+  {
+    tag: "Base fitness",
+    title: "BaseBuilder 2",
+    text: "One of ZSUN's longest-running endurance rides. Build or maintain aerobic fitness with steady group riding and useful chat along the way.",
+    pills: ["Saturday", "90-120 mins", "Pens A-E"],
+  },
+  {
+    tag: "Endurance",
+    title: "Endurance Enhancer",
+    text: "A focused longer ride for riders wanting to build stamina, resilience and aerobic capacity with a stronger social group.",
+    pills: ["Sunday AM", "~120 mins", "2.4-2.7 w/kg"],
+  },
+  {
+    tag: "Harder training",
+    title: "Chain Gang",
+    text: "A fast-paced training ride. It is not a race, but it is not no-drop: hold on for as long as you can and try to go further each week.",
+    pills: ["~60 mins", "3.0+ w/kg", "No sweepers"],
+  },
+  {
+    tag: "Women-only",
+    title: "Ladies Social",
+    text: "A welcoming ladies-only group ride for female Zwifters of all abilities, with friendly group dynamics and a supportive atmosphere.",
+    pills: ["Tuesday", "~60 mins", "1.8-2.2 w/kg"],
+  },
+];
+
+const expectations = [
+  {
+    title: "Follow the beacon",
+    text: "The yellow beacon holds the advertised pace. Stay close and use the draft.",
+  },
+  {
+    title: "Check the ride type",
+    text: "Some rides are social and supported. Others, such as Chain Gang, are harder and not no-drop.",
+  },
+  {
+    title: "Use Discord your way",
+    text: "Join the voice channel to chat, listen in, ask questions or simply feel part of the group.",
+  },
+  {
+    title: "Ride respectfully",
+    text: "Support other riders, communicate clearly and keep the group atmosphere positive.",
+  },
+  {
+    title: "Fence may be used",
+    text: "On some rides, the fence helps keep the group together and protects the advertised pace.",
+  },
+  {
+    title: "Unlock the kit",
+    text: "Completing ZSUN events can help riders unlock the ZSUN kit in Zwift.",
+  },
+];
+
+const seasonalRides = ["Wendurance", "Sunday Sundae", "Base Builder"];
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="announcement"></Fragment>
+
+  <ZsunPageHero
+    eyebrow="Social riding"
+    title='<span class="zsun-gradient-text">Ride with us at ZSUN</span>'
+    lead="Friendly Zwift group rides for social miles, confidence building, endurance development and harder training. Choose the ride that fits your level, join the group and enjoy riding with the ZSUN community."
+    actions={[
+      {
+        text: "Discover our weekly events",
+        href: "https://zwifthacks.com/app/events/?key=6415c9c7813a1",
+        variant: "primary",
+        target: "_blank",
+      },
+      { text: "Join ZSUN", href: "/join", variant: "secondary" },
+    ]}
+    class="zsun-page-hero-with-visual"
+  >
+    <div
+      slot="visual"
+      class="zsun-hero-visual zsun-hero-visual-ride"
+      aria-hidden="true"
+    >
+      <div class="zsun-hero-track">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="zsun-hero-badge">Weekly events</div>
+      <div class="zsun-hero-metric">
+        <strong>Ride</strong>
+        <span>Social miles to stronger efforts</span>
+      </div>
+    </div>
+  </ZsunPageHero>
+
+  <ZsunSection
+    eyebrow="Find your ride"
+    title="There is more than one way to ride with ZSUN."
+    lead="ZSUN rides range from gentle social spins to longer endurance builders and faster training rides. Live schedules can change, so use the Zwift event links and Discord for the latest ride information."
+  >
+    <div class="zsun-audience-list">
+      {
+        audiences.map((audience) => (
+          <div class="zsun-audience-row">
+            <strong>{audience.title}</strong>
+            <span>{audience.text}</span>
+          </div>
+        ))
+      }
+    </div>
+  </ZsunSection>
+
+  <ZsunSection
+    eyebrow="Regular rides"
+    title="Featured ZSUN rides"
+    lead="These examples show the range of riding available. Pick the event that matches your current fitness, confidence and training goal."
+    variant="alt"
+  >
+    <div class="zsun-grid zsun-grid-four">
+      {
+        featuredRides.map((ride) => (
+          <ZsunCard
+            eyebrow={ride.tag}
+            title={ride.title}
+            text={ride.text}
+            class="zsun-detail-card"
+          >
+            <div class="zsun-pill-row">
+              {ride.pills.map((pill) => (
+                <span class="zsun-pill">{pill}</span>
+              ))}
+            </div>
+          </ZsunCard>
+        ))
+      }
+    </div>
+  </ZsunSection>
+
+  <ZsunSection
+    eyebrow="What to expect"
+    title="Group riding works best when everyone understands the basics."
+    lead="ZSUN rides are friendly, but each ride has its own purpose. Read the event description, respect the advertised pace and use Discord if you want live chat or help before you ride."
+  >
+    <div class="zsun-grid zsun-grid-three">
+      {
+        expectations.map((expectation) => (
+          <ZsunCard
+            title={expectation.title}
+            text={expectation.text}
+            class="zsun-detail-card zsun-compact-card"
+          />
+        ))
+      }
+    </div>
+  </ZsunSection>
+
+  <ZsunSection variant="alt">
+    <ZsunFeatureBand
+      eyebrow="Community"
+      title="Join the ZSUN family on and off the bike."
+      lead="Joining the ZSUN Zwift Club helps riders stay connected with club activity and makes it easier to find the community inside Zwift."
+      visualLabel="Club"
+    >
+      <p class="zsun-support-copy">
+        During many events we chat live in <strong>Discord</strong>. You can
+        simply listen in, or join the conversation about cycling, training,
+        racing and plenty beyond that.
+      </p>
+      <div class="zsun-action-row">
+        <Button
+          text="Join the ZSUN Zwift Club"
+          href="https://www.zwift.com/clubs/ZSUN/home"
+          variant="primary"
+          target="_blank"
+        />
+        <Button
+          text="Join Discord"
+          href="https://zsunr.com/discord"
+          variant="secondary"
+          target="_blank"
+        />
+      </div>
+    </ZsunFeatureBand>
+  </ZsunSection>
+
+  <ZsunSection
+    eyebrow="Seasonal rides"
+    title="Winter rides to look out for"
+    lead="ZSUN also runs seasonal rides through the winter period, typically from October or November through to March or April. Check the live event listings and Discord for current times and availability."
+  >
+    <div class="zsun-seasonal-band">
+      <p>
+        Seasonal favourites regularly include <strong>Wendurance</strong>, <strong
+          >Sunday Sundae</strong
+        > and <strong>Base Builder</strong>, giving riders a dependable winter
+        rhythm when outdoor riding gets harder.
+      </p>
+      <div class="zsun-seasonal-list">
+        {seasonalRides.map((ride) => <span>{ride}</span>)}
+      </div>
+    </div>
+  </ZsunSection>
+
+  <ZsunSection variant="alt">
+    <ZsunFeatureBand
+      eyebrow="Start riding"
+      title="Ready to find your next ZSUN ride?"
+      lead="Join the club, check the weekly events and use Discord if you want guidance before your first ride."
+      visualLabel="Ride"
+    >
+      <div class="zsun-action-row">
+        <Button text="Join ZSUN" href="/join" variant="primary" />
+        <Button
+          text="View weekly events"
+          href="https://zwifthacks.com/app/events/?key=6415c9c7813a1"
+          variant="secondary"
+          target="_blank"
+        />
+      </div>
+    </ZsunFeatureBand>
+  </ZsunSection>
+</Layout>

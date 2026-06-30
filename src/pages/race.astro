@@ -1,0 +1,306 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import Button from "~/components/ui/Button.astro";
+import ZsunCard from "~/components/zsun/ZsunCard.astro";
+import ZsunFeatureBand from "~/components/zsun/ZsunFeatureBand.astro";
+import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
+import ZsunSection from "~/components/zsun/ZsunSection.astro";
+
+const metadata = {
+  title: "Race",
+  description:
+    "Race with ZSUN across ZRL, WTRL Team Time Trial and club competition, with a focus on fair racing, teamwork and rider development.",
+};
+
+const pathway = [
+  {
+    step: "1",
+    title: "Join the ZSUN spaces",
+    text: "Use the Join page to get into ZSUN Discord and the ZSUN Zwift Club. That gives you the basic route into rides, events and team communication.",
+    href: "/join",
+    linkText: "View joining steps",
+  },
+  {
+    step: "2",
+    title: "Use the racing channels",
+    text: "Ask about ZRL, WTRL TTT, Ladder League and other race options. Captains and organisers can point you towards the right place.",
+  },
+  {
+    step: "3",
+    title: "Complete race registration",
+    text: "Some racing needs accounts outside Zwift. Use the requirements section below and ask on Discord if you are unsure.",
+  },
+  {
+    step: "4",
+    title: "Race properly",
+    text: "Arrive prepared, follow the event rules, communicate clearly and race in a way that supports the team.",
+  },
+];
+
+const opportunities = [
+  {
+    tag: "Thursday racing",
+    title: "WTRL Team Time Trial",
+    text: "Team-based TTT racing where pacing, formation, communication and rider selection matter as much as raw power.",
+  },
+  {
+    tag: "League racing",
+    title: "Zwift Racing League",
+    text: "Structured team racing across race rounds, with captains helping riders understand selection, roles and race-day expectations.",
+  },
+  {
+    tag: "Club competition",
+    title: "Club Ladder",
+    text: "Club-linked racing activity where riders may need additional registration to appear in standings and results views.",
+  },
+  {
+    tag: "Open racing",
+    title: "Other Zwift races",
+    text: "Riders also race individually or in smaller groups, using Discord for advice, race choice, setup and learning.",
+  },
+  {
+    tag: "Team structure",
+    title: "Mixed, women's and men's teams",
+    text: "ZSUN racing includes different team formats and category levels, with support for riders who are new to organised racing.",
+  },
+  {
+    tag: "Development",
+    title: "Learn to race better",
+    text: "Racing with ZSUN is not just about results. It is also about tactics, pacing, communication, resilience and fair play.",
+  },
+];
+
+const registrations = [
+  {
+    title: "ZwiftPower",
+    text: "Mainly needed for racing results, rider data and event validation.",
+    href: "https://zwiftpower.com/",
+  },
+  {
+    title: "WTRL",
+    text: "Needed for WTRL TTT and Zwift Racing League registration.",
+    href: "https://www.wtrl.racing/registration/",
+  },
+  {
+    title: "ZwiftRacing.app",
+    text: "Needed for Ladder League activity and racing categorisation tools.",
+    href: "https://www.zwiftracing.app/",
+  },
+  {
+    title: "Ladder League sign-in",
+    text: "Needed to view club ladder positions and league standings.",
+    href: "https://ladder.cycleracing.club/signin",
+  },
+];
+
+const fairRacing = [
+  "Use honest and current height and weight.",
+  "Enter the correct category, event or team.",
+  "Follow organiser rules and platform requirements.",
+  "Respect captains, teammates and other riders.",
+  "Communicate clearly if selected for a team.",
+];
+
+const results = [
+  {
+    tag: "Team Time Trial",
+    title: "WTRL TTT",
+    text: "Results and team updates for Thursday WTRL Team Time Trial racing.",
+  },
+  {
+    tag: "League Racing",
+    title: "ZRL",
+    text: "Zwift Racing League reports, league tables, team performance and rider-level views where available.",
+  },
+  {
+    tag: "Club Competition",
+    title: "Club Ladder",
+    text: "Club ladder positions and league standings for ZSUN racing activity.",
+  },
+  {
+    tag: "Race Series",
+    title: "Dirt Race Series",
+    text: "Results and standings for the Dirt Race Series when ZSUN riders take part.",
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="announcement"></Fragment>
+
+  <ZsunPageHero
+    eyebrow="ZSUN Racing"
+    title='<span class="zsun-gradient-text">Race hard. Ride smart.</span>'
+    lead="Race with a global ZSUN team across Zwift Racing League, WTRL Team Time Trials, Ladder League activity and selected open races. We keep the focus clear: fair racing, strong communication, good teamwork and support for riders who want to improve."
+    actions={[
+      {
+        text: "Start racing with ZSUN",
+        href: "#start-racing",
+        variant: "primary",
+      },
+      {
+        text: "View racing requirements",
+        href: "#racing-requirements",
+        variant: "secondary",
+      },
+    ]}
+    class="zsun-page-hero-with-visual"
+  >
+    <div
+      slot="visual"
+      class="zsun-hero-visual zsun-hero-visual-race"
+      aria-hidden="true"
+    >
+      <div class="zsun-hero-paceline">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="zsun-hero-badge">Team race prep</div>
+      <div class="zsun-hero-metric">
+        <strong>Fair racing</strong>
+        <span>Teamwork, pacing and communication</span>
+      </div>
+    </div>
+  </ZsunPageHero>
+
+  <ZsunSection
+    id="start-racing"
+    title="How to start racing with ZSUN"
+    lead="Join the community first, then use Discord to find the right race, team and registration route."
+  >
+    <div class="zsun-pathway">
+      {
+        pathway.map((item) => (
+          <article class="zsun-step-card">
+            <span class="zsun-step-number">{item.step}</span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+              {item.href && (
+                <a href={item.href} class="zsun-inline-link">
+                  {item.linkText}
+                </a>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </ZsunSection>
+
+  <ZsunSection
+    title="Racing opportunities"
+    lead="ZSUN supports different forms of virtual racing, from team time trials to structured league racing and club competition."
+    variant="alt"
+  >
+    <div class="zsun-grid zsun-grid-three">
+      {
+        opportunities.map((opportunity) => (
+          <ZsunCard
+            eyebrow={opportunity.tag}
+            title={opportunity.title}
+            text={opportunity.text}
+            class="zsun-detail-card"
+          />
+        ))
+      }
+    </div>
+  </ZsunSection>
+
+  <ZsunSection
+    id="racing-requirements"
+    eyebrow="Race registration"
+    title="Some races need extra accounts."
+    lead="Zwift Club membership gets you into the community, but racing often needs extra registration depending on the event or league. Use the links below, and ask for help in Discord if anything is unclear."
+  >
+    <div class="zsun-link-list">
+      {
+        registrations.map((registration) => (
+          <a href={registration.href} target="_blank" class="zsun-link-card">
+            <strong>{registration.title}</strong>
+            <span>{registration.text}</span>
+          </a>
+        ))
+      }
+    </div>
+  </ZsunSection>
+
+  <ZsunSection variant="alt">
+    <div class="zsun-two-panel">
+      <ZsunCard
+        eyebrow="Team support"
+        title="Captains help racing run properly."
+        text="ZSUN Racing relies on captains, organisers and team communication. They help with team selection, race sign-up, TTT organisation, race-day expectations, rider communication and post-race learning."
+        class="zsun-detail-card"
+      >
+        <p class="zsun-support-copy">
+          Use the right Discord channels early. Do not leave race questions
+          until the last minute.
+        </p>
+        <div class="zsun-action-row">
+          <Button
+            text="Ask in Discord"
+            href="https://zsunr.com/discord"
+            variant="secondary"
+            target="_blank"
+            class="btn-small"
+          />
+        </div>
+      </ZsunCard>
+
+      <ZsunCard
+        eyebrow="Fair racing"
+        title="Fair racing is non-negotiable."
+        class="zsun-detail-card"
+      >
+        <ul class="zsun-checklist">
+          {fairRacing.map((item) => <li>{item}</li>)}
+        </ul>
+      </ZsunCard>
+    </div>
+  </ZsunSection>
+
+  <ZsunSection
+    title="Race results"
+    lead="Published results windows for the main ZSUN racing activities. Stage 2 keeps these as informational placeholders until dedicated result views exist."
+  >
+    <div class="zsun-grid zsun-grid-four">
+      {
+        results.map((result) => (
+          <ZsunCard
+            eyebrow={result.tag}
+            title={result.title}
+            text={result.text}
+            class="zsun-detail-card"
+          >
+            <div class="zsun-placeholder-window">
+              <strong>Results dashboard</strong>
+              <span>Coming soon</span>
+            </div>
+          </ZsunCard>
+        ))
+      }
+    </div>
+  </ZsunSection>
+
+  <ZsunSection variant="alt">
+    <ZsunFeatureBand
+      eyebrow="Ready to race?"
+      title="Start with the club, then ask in the racing channels."
+      lead="ZSUN will help you find the right event, understand the registration route and race with the right expectations."
+      visualLabel="Race"
+    >
+      <div class="zsun-action-row">
+        <Button text="Join ZSUN" href="/join" variant="primary" />
+        <Button
+          text="Open Discord"
+          href="https://zsunr.com/discord"
+          variant="secondary"
+          target="_blank"
+        />
+      </div>
+    </ZsunFeatureBand>
+  </ZsunSection>
+</Layout>
