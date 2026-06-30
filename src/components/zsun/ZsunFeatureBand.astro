@@ -1,9 +1,15 @@
 ---
+import type { ImageMetadata } from "astro";
+import Image from "~/components/common/Image.astro";
+
 export interface Props {
   eyebrow?: string;
   title: string;
   lead?: string;
   pills?: string[];
+  image?: string | ImageMetadata;
+  imageAlt?: string;
+  imagePosition?: string;
   visualLabel?: string;
   class?: string;
 }
@@ -13,6 +19,9 @@ const {
   title,
   lead,
   pills = [],
+  image,
+  imageAlt = "",
+  imagePosition = "center center",
   visualLabel = "ZSUN",
   class: className = "",
 } = Astro.props;
@@ -34,13 +43,29 @@ const {
     }
     <slot />
   </div>
-  <div class="zsun-feature-visual" aria-hidden="true">
-    <div class="zsun-visual-lines">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <strong>{visualLabel}</strong>
-  </div>
+  {
+    image ? (
+      <div class="zsun-feature-image-card">
+        <Image
+          src={image}
+          alt={imageAlt}
+          width={960}
+          height={640}
+          widths={[480, 720, 960, 1280]}
+          layout="cover"
+          style={`width:100%;height:100%;object-position:${imagePosition};`}
+        />
+      </div>
+    ) : (
+      <div class="zsun-feature-visual" aria-hidden="true">
+        <div class="zsun-visual-lines">
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
+        <strong>{visualLabel}</strong>
+      </div>
+    )
+  }
 </section>

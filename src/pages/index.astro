@@ -5,6 +5,10 @@ import ZsunSection from "~/components/zsun/ZsunSection.astro";
 import ZsunImageCard from "~/components/zsun/ZsunImageCard.astro";
 import ZsunFeatureBand from "~/components/zsun/ZsunFeatureBand.astro";
 import ZsunCard from "~/components/zsun/ZsunCard.astro";
+import zsunClubValuesImage from "~/assets/images/zsun/zsun-club-values-v2.png";
+import zsunBaseBuilder39 from "~/assets/images/zsun/zsun-base-builder-39.jpg";
+import zsunBaseBuilder94 from "~/assets/images/zsun/zsun-base-builder-94.jpg";
+import zsunHomeHero01 from "~/assets/images/zsun/zsun-home-hero-01.png";
 
 const metadata = {
   title: "Home",
@@ -18,6 +22,9 @@ const routes = [
     text: "Group rides and community events across time zones.",
     href: "/ride",
     actionText: "Ride",
+    image: zsunClubValuesImage,
+    alt: "ZSUN social ride",
+    imagePosition: "center 42%",
     visualLabel: "Ride",
     variant: "red" as const,
   },
@@ -26,6 +33,9 @@ const routes = [
     text: "Structured team racing with captains, support and a team-first culture.",
     href: "/race",
     actionText: "Race",
+    image: zsunBaseBuilder39,
+    alt: "ZSUN racing",
+    imagePosition: "center 32%",
     visualLabel: "Race",
     variant: "orange" as const,
   },
@@ -34,6 +44,9 @@ const routes = [
     text: "Tools, rider guides, training planning and practical performance education.",
     href: "/coaching",
     actionText: "Improve",
+    image: zsunBaseBuilder94,
+    alt: "ZSUN performance",
+    imagePosition: "center 24%",
     visualLabel: "Improve",
     variant: "gold" as const,
   },
@@ -70,6 +83,9 @@ const values = [
             text={route.text}
             href={route.href}
             actionText={route.actionText}
+            image={route.image}
+            alt={route.alt}
+            imagePosition={route.imagePosition}
             visualLabel={route.visualLabel}
             variant={route.variant}
           />
@@ -84,11 +100,18 @@ const values = [
       title="Fast matters. How we ride matters more."
       lead="These values underpin ZSUN and guide how we ride, race and support each other."
       pills={values}
+      image={zsunHomeHero01}
+      imageAlt="ZSUN riders in a fast paceline"
+      imagePosition="center center"
       visualLabel="ZSUN"
     />
   </ZsunSection>
 
-  <ZsunSection title="A practical route into the club" variant="default">
+  <ZsunSection
+    title="A practical route into the club"
+    variant="default"
+    class="home-practical-section"
+  >
     <div class="zsun-grid zsun-grid-three">
       <ZsunCard
         eyebrow="Start"

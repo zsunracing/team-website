@@ -1,8 +1,16 @@
 ---
+import { Image as AstroImage } from "astro:assets";
 import { SITE } from "astrowind:config";
+import zsunSunLogo from "~/assets/images/zsun/zsun-sun-logo.png";
 ---
 
 <span class="zsun-logo" aria-label={SITE?.name}>
-  <span class="zsun-logo-mark" aria-hidden="true">Z</span>
+  <AstroImage
+    src={zsunSunLogo}
+    alt=""
+    width={62}
+    height={62}
+    class="zsun-logo-image"
+  />
   <span class="zsun-logo-text">ZSUN</span>
 </span>

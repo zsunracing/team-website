@@ -58,7 +58,9 @@
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 font-black text-center text-base text-white leading-snug transition py-3 px-5 md:px-6 ease-in duration-200 focus:ring-orange-400 focus:ring-offset-2 focus:ring-2 focus:ring-offset-[#07090f] hover:bg-white/15 hover:border-white/25 cursor-pointer;
+  @apply inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 font-black text-center text-base text-white transition ease-in duration-200 cursor-pointer focus:ring-orange-400 focus:ring-offset-2 focus:ring-2 focus:ring-offset-[#07090f] hover:bg-white/15 hover:border-white/25;
+  padding: 12px 18px;
+  line-height: 1.2;
 }
 
 @utility btn-primary {
@@ -165,31 +167,18 @@ body {
   align-items: center;
   gap: 14px;
   color: white;
-  font-weight: 950;
+  font-weight: 900;
   letter-spacing: 0.02em;
 }
 
-.zsun-logo-mark {
-  display: grid;
-  width: 52px;
-  height: 52px;
-  place-items: center;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at 32% 28%, var(--zsun-gold), transparent 24%),
-    conic-gradient(
-      from 18deg,
-      var(--zsun-orange),
-      var(--zsun-red),
-      var(--zsun-orange)
-    );
-  color: #07090f;
-  font-size: 1.35rem;
-  box-shadow: 0 12px 34px rgb(239 35 60 / 25%);
+.zsun-logo-image {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
 }
 
 .zsun-logo-text {
-  font-size: 1.42rem;
+  font-size: 1.45rem;
 }
 
 .zsun-nav-link {
@@ -239,9 +228,9 @@ body {
   max-width: 920px;
   color: white;
   font-family: var(--aw-font-heading), ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(2.7rem, 6vw, 5.7rem);
-  font-weight: 950;
-  letter-spacing: -0.055em;
+  font-size: clamp(2.35rem, 5vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -0.065em;
   line-height: 0.94;
 }
 
@@ -255,7 +244,7 @@ body {
 .zsun-lead {
   max-width: 70ch;
   color: #d7dcec;
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
   line-height: 1.62;
 }
 
@@ -304,10 +293,10 @@ body {
 
 .zsun-section-head h2,
 .zsun-feature-band h2 {
-  margin: 12px 0 0;
+  margin: 0;
   color: white;
-  font-size: clamp(2rem, 3.5vw, 3.1rem);
-  font-weight: 950;
+  font-size: clamp(1.8rem, 2.5vw, 2.7rem);
+  font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 1;
 }
@@ -348,6 +337,7 @@ body {
   color: white;
   font-size: 1.25rem;
   font-weight: 900;
+  line-height: 1.15;
 }
 
 .zsun-card p,
@@ -357,7 +347,9 @@ body {
 }
 
 .zsun-image-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   overflow: hidden;
   transition:
     transform 180ms ease,
@@ -369,14 +361,33 @@ body {
   transform: translateY(-2px);
 }
 
+.zsun-image-card-media {
+  flex: none;
+}
+
 .zsun-image-card-visual {
-  min-height: 220px;
+  position: relative;
+  aspect-ratio: 8 / 5;
   overflow: hidden;
+}
+
+.zsun-image-card-visual picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.zsun-image-card-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .zsun-generated-visual {
   display: grid;
-  min-height: 240px;
+  width: 100%;
+  height: 100%;
   place-items: end start;
   padding: 22px;
   background:
@@ -422,6 +433,7 @@ body {
 }
 
 .zsun-image-card-body {
+  flex: 1;
   padding: 22px;
 }
 
@@ -448,6 +460,28 @@ body {
 
 .zsun-feature-band .zsun-lead {
   margin-top: 16px;
+}
+
+.zsun-feature-image-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--zsun-radius);
+  height: 100%;
+  min-height: 320px;
+}
+
+.zsun-feature-image-card picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.zsun-feature-image-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--zsun-radius);
+  object-fit: cover;
 }
 
 .zsun-pill-row {
@@ -595,6 +629,19 @@ body {
   padding: 9px;
 }
 
+.home-hero-single {
+  padding-bottom: 34px;
+}
+
+.home-hero-single .zsun-page-hero-inner {
+  grid-template-columns: minmax(0, 820px);
+  justify-content: start;
+}
+
+.home-practical-section {
+  padding-top: 44px;
+}
+
 .zsun-page-hero-with-visual .zsun-page-hero-inner {
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
   gap: 28px;
@@ -619,6 +666,50 @@ body {
   inset: 16px;
   border: 1px solid rgb(255 255 255 / 8%);
   border-radius: 24px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.zsun-hero-visual-photo {
+  background: #0a0d15;
+}
+
+.zsun-hero-photo-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.zsun-hero-photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(7 9 15 / 16%), rgb(7 9 15 / 30%)),
+    linear-gradient(135deg, rgb(7 9 15 / 22%), rgb(7 9 15 / 58%));
+}
+
+.zsun-hero-photo-frame picture,
+.zsun-hero-photo-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.zsun-hero-photo-frame img {
+  object-fit: cover;
+  filter: saturate(1.03) contrast(1.02) brightness(0.9);
+}
+
+.zsun-hero-visual-photo .zsun-hero-badge,
+.zsun-hero-visual-photo .zsun-hero-metric,
+.zsun-hero-visual-photo .zsun-resource-visual-stack {
+  z-index: 2;
+}
+
+.zsun-hero-visual-photo.zsun-hero-visual-ride::after,
+.zsun-hero-visual-photo.zsun-hero-visual-race::after {
+  content: none;
 }
 
 .zsun-hero-badge {
@@ -1079,7 +1170,7 @@ body {
 
 .zsun-join-media {
   display: grid;
-  place-items: center;
+  place-items: stretch;
   background:
     radial-gradient(circle at 24% 22%, rgb(255 194 71 / 22%), transparent 18%),
     linear-gradient(140deg, rgb(239 35 60 / 18%), rgb(12 16 26));
@@ -1171,6 +1262,39 @@ body {
   margin-top: 4px;
   color: #d7dcec;
   font-size: 0.95rem;
+}
+
+.zsun-join-screenshot-frame {
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 24px;
+  background: rgb(7 9 15 / 82%);
+  box-shadow: 0 20px 48px rgb(0 0 0 / 25%);
+}
+
+.zsun-join-screenshot-frame picture,
+.zsun-join-screenshot-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.zsun-join-screenshot-frame img {
+  object-fit: cover;
+}
+
+.zsun-join-screenshot-frame-desktop {
+  min-height: 350px;
+}
+
+.zsun-join-screenshot-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.zsun-join-screenshot-frame-phone {
+  min-height: 380px;
 }
 
 .zsun-join-body {
@@ -1274,6 +1398,24 @@ body {
 .zsun-coaching-service-copy {
   display: grid;
   gap: 18px;
+}
+
+.zsun-coaching-flag-card {
+  overflow: hidden;
+  border: 1px solid var(--zsun-line);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 78% 20%, rgb(255 138 0 / 14%), transparent 22%),
+    rgb(7 9 15 / 72%);
+  box-shadow: 0 14px 44px rgb(0 0 0 / 18%);
+  padding: 14px;
+}
+
+.zsun-coaching-flag-card picture,
+.zsun-coaching-flag-card img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .zsun-credential-card,
@@ -1675,6 +1817,14 @@ body {
   .zsun-join-media,
   .zsun-join-body {
     padding: 22px;
+  }
+
+  .zsun-join-screenshot-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .zsun-join-screenshot-frame-phone {
+    min-height: 420px;
   }
 
   .zsun-device-frame-accent {

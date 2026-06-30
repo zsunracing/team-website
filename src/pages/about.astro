@@ -1,10 +1,13 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
+import Image from "~/components/common/Image.astro";
 import ZsunCard from "~/components/zsun/ZsunCard.astro";
 import ZsunFeatureBand from "~/components/zsun/ZsunFeatureBand.astro";
 import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
 import ZsunSection from "~/components/zsun/ZsunSection.astro";
 import type { CallToAction } from "~/types";
+import aboutHeroImage from "~/assets/images/zsun/zsunr-wide-59-clean.jpg";
+import aboutCommunityImage from "~/assets/images/zsun/zsun-base-builder-7.jpg";
 
 const metadata = {
   title: "About",
@@ -129,9 +132,18 @@ const pathways: Array<{
   >
     <div
       slot="visual"
-      class="zsun-hero-visual zsun-hero-visual-resources"
+      class="zsun-hero-visual zsun-hero-visual-photo zsun-hero-visual-resources"
       aria-hidden="true"
     >
+      <div class="zsun-hero-photo-frame">
+        <Image
+          src={aboutHeroImage}
+          alt=""
+          widths={[480, 720, 960, 1280]}
+          layout="cover"
+          style="width:100%;height:100%;object-position:center 45%;"
+        />
+      </div>
       <div class="zsun-resource-visual-stack">
         <div class="zsun-resource-visual-card">
           <strong>Global community</strong>
@@ -195,7 +207,9 @@ const pathways: Array<{
       title="Organised, supportive and still rider-led."
       lead="ZSUN is organised enough to help riders find events, teams and support, while staying grounded in the simple idea that cycling is better when people do it together."
       pills={["Social rides", "Team racing", "Rider support", "Belonging"]}
-      visualLabel="Together"
+      image={aboutCommunityImage}
+      imageAlt="ZSUN riders close together during a community ride"
+      imagePosition="center 38%"
     >
       <p class="zsun-support-copy">
         You do not have to race to belong at ZSUN. Some riders come for social

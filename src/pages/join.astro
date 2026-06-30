@@ -1,8 +1,13 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
+import Image from "~/components/common/Image.astro";
 import Button from "~/components/ui/Button.astro";
 import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
 import ZsunSection from "~/components/zsun/ZsunSection.astro";
+import joinHeroImage from "~/assets/images/zsun/join-zsun-community-infographic.png";
+import joinDiscordImage from "~/assets/images/zsun/join-discord.png";
+import joinCompanionSearchImage from "~/assets/images/zsun/join-companion-search.png";
+import joinCompanionResultImage from "~/assets/images/zsun/join-companion-result.png";
 
 const metadata = {
   title: "Join",
@@ -44,16 +49,17 @@ const clubSteps = [
   >
     <div
       slot="visual"
-      class="zsun-hero-visual zsun-hero-visual-join"
+      class="zsun-hero-visual zsun-hero-visual-photo zsun-hero-visual-join-photo"
       aria-hidden="true"
     >
-      <div class="zsun-hero-step">
-        <strong>1</strong>
-        <span>Join Discord</span>
-      </div>
-      <div class="zsun-hero-step">
-        <strong>2</strong>
-        <span>Join Zwift Club</span>
+      <div class="zsun-hero-photo-frame">
+        <Image
+          src={joinHeroImage}
+          alt=""
+          widths={[480, 720, 960, 1280]}
+          layout="cover"
+          style="width:100%;height:100%;object-position:center center;"
+        />
       </div>
     </div>
   </ZsunPageHero>
@@ -61,14 +67,17 @@ const clubSteps = [
   <ZsunSection id="join-options" title="Two simple joining steps">
     <div class="zsun-join-grid">
       <article class="zsun-join-card">
-        <div class="zsun-join-media zsun-join-media-discord" aria-hidden="true">
-          <div class="zsun-device-frame">
-            <span class="zsun-device-label">Discord</span>
-            <div class="zsun-device-lines">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+        <div class="zsun-join-media zsun-join-media-discord">
+          <div
+            class="zsun-join-screenshot-frame zsun-join-screenshot-frame-desktop"
+          >
+            <Image
+              src={joinDiscordImage}
+              alt="ZSUN Discord server showing welcome and account setup channels"
+              widths={[480, 720, 960]}
+              layout="cover"
+              style="width:100%;height:100%;object-position:center top;"
+            />
           </div>
         </div>
         <div class="zsun-join-body">
@@ -97,16 +106,29 @@ const clubSteps = [
       </article>
 
       <article class="zsun-join-card">
-        <div class="zsun-join-media zsun-join-media-club" aria-hidden="true">
-          <div class="zsun-device-stack">
-            <div class="zsun-device-frame">
-              <span class="zsun-device-label">Search clubs</span>
-              <div class="zsun-search-chip">ZSUN</div>
+        <div class="zsun-join-media zsun-join-media-club">
+          <div class="zsun-join-screenshot-pair">
+            <div
+              class="zsun-join-screenshot-frame zsun-join-screenshot-frame-phone"
+            >
+              <Image
+                src={joinCompanionSearchImage}
+                alt="Zwift Companion app showing the Clubs page with ZSUN entered into the search box"
+                widths={[320, 480, 640]}
+                layout="cover"
+                style="width:100%;height:100%;object-position:center top;"
+              />
             </div>
-            <div class="zsun-device-frame zsun-device-frame-accent">
-              <span class="zsun-device-label">Club result</span>
-              <strong>ZSUN</strong>
-              <small>Zwift Club</small>
+            <div
+              class="zsun-join-screenshot-frame zsun-join-screenshot-frame-phone"
+            >
+              <Image
+                src={joinCompanionResultImage}
+                alt="Zwift Companion app showing the ZSUN club result after searching in the Clubs section"
+                widths={[320, 480, 640]}
+                layout="cover"
+                style="width:100%;height:100%;object-position:center top;"
+              />
             </div>
           </div>
         </div>

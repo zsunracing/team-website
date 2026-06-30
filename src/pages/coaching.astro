@@ -1,10 +1,13 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
+import Image from "~/components/common/Image.astro";
 import Button from "~/components/ui/Button.astro";
 import ZsunCard from "~/components/zsun/ZsunCard.astro";
 import ZsunFeatureBand from "~/components/zsun/ZsunFeatureBand.astro";
 import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
 import ZsunSection from "~/components/zsun/ZsunSection.astro";
+import coachingHeroImage from "~/assets/images/zsun/zsun-coaching-rider-02.png";
+import coachingFlagImage from "~/assets/images/zsun/zsun-coaching-flag.png";
 
 const metadata = {
   title: "Coaching",
@@ -147,23 +150,17 @@ const aiSupport = [
   >
     <div
       slot="visual"
-      class="zsun-hero-visual zsun-hero-visual-coaching"
+      class="zsun-hero-visual zsun-hero-visual-photo zsun-hero-visual-coaching-photo"
       aria-hidden="true"
     >
-      <div class="zsun-coaching-dashboard">
-        <div class="zsun-coaching-screen">
-          <span class="zsun-device-label">Performance Hub</span>
-          <div class="zsun-device-lines">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-        <div class="zsun-coaching-screen zsun-coaching-screen-accent">
-          <span class="zsun-device-label">1-to-1 coaching</span>
-          <strong>Coach</strong>
-          <small>Human-led review and progression</small>
-        </div>
+      <div class="zsun-hero-photo-frame">
+        <Image
+          src={coachingHeroImage}
+          alt=""
+          widths={[480, 720, 960, 1280]}
+          layout="cover"
+          style="width:100%;height:100%;object-position:center 32%;"
+        />
       </div>
       <div class="zsun-hero-badge">Two support routes</div>
       <div class="zsun-hero-metric">
@@ -223,6 +220,15 @@ const aiSupport = [
   >
     <div class="zsun-coaching-service-panel">
       <div class="zsun-coaching-service-visual">
+        <div class="zsun-coaching-flag-card">
+          <Image
+            src={coachingFlagImage}
+            alt="ZSUN Coaching flag graphic"
+            widths={[480, 720, 960]}
+            layout="responsive"
+            style="width:100%;height:auto;object-position:center center;"
+          />
+        </div>
         <div class="zsun-credential-card">
           <span class="zsun-eyebrow">ABCC Level 3</span>
           <h3>Stewart Lalieu, ZSUN Head Coach</h3>

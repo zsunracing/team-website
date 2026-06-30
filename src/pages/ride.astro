@@ -1,10 +1,13 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
+import Image from "~/components/common/Image.astro";
 import Button from "~/components/ui/Button.astro";
 import ZsunCard from "~/components/zsun/ZsunCard.astro";
 import ZsunFeatureBand from "~/components/zsun/ZsunFeatureBand.astro";
 import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
 import ZsunSection from "~/components/zsun/ZsunSection.astro";
+import rideHeroImage from "~/assets/images/zsun/zsun-base-builder-18.jpg";
+import rideCommunityImage from "~/assets/images/zsun/zsun-ride-community-v24.png";
 
 const metadata = {
   title: "Ride",
@@ -140,13 +143,17 @@ const seasonalRides = ["Wendurance", "Sunday Sundae", "Base Builder"];
   >
     <div
       slot="visual"
-      class="zsun-hero-visual zsun-hero-visual-ride"
+      class="zsun-hero-visual zsun-hero-visual-photo zsun-hero-visual-ride"
       aria-hidden="true"
     >
-      <div class="zsun-hero-track">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="zsun-hero-photo-frame">
+        <Image
+          src={rideHeroImage}
+          alt=""
+          widths={[480, 720, 960, 1280]}
+          layout="cover"
+          style="width:100%;height:100%;object-position:center 46%;"
+        />
       </div>
       <div class="zsun-hero-badge">Weekly events</div>
       <div class="zsun-hero-metric">
@@ -222,7 +229,9 @@ const seasonalRides = ["Wendurance", "Sunday Sundae", "Base Builder"];
       eyebrow="Community"
       title="Join the ZSUN family on and off the bike."
       lead="Joining the ZSUN Zwift Club helps riders stay connected with club activity and makes it easier to find the community inside Zwift."
-      visualLabel="Club"
+      image={rideCommunityImage}
+      imageAlt="ZSUN riders together in formation on a scenic road"
+      imagePosition="center 50%"
     >
       <p class="zsun-support-copy">
         During many events we chat live in <strong>Discord</strong>. You can
