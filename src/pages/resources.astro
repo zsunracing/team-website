@@ -1,0 +1,223 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import Button from "~/components/ui/Button.astro";
+import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
+import ZsunSection from "~/components/zsun/ZsunSection.astro";
+
+const metadata = {
+  title: "Resources",
+  description:
+    "Useful links for ZSUN communication, events, racing registration and performance support.",
+};
+
+const clubLinks = [
+  {
+    badge: "D",
+    title: "Discord",
+    text: "Main ZSUN communication hub",
+    href: "https://zsunr.com/discord",
+    urlLabel: "zsunr.com/discord",
+  },
+  {
+    badge: "EV",
+    title: "ZSUN Events",
+    text: "Upcoming ZSUN rides and events",
+    href: "https://zwifthacks.com/app/events/?key=6415c9c7813a1",
+    urlLabel: "ZwiftHacks events",
+  },
+  {
+    badge: "Z",
+    title: "ZSUN Zwift Club",
+    text: "Log in with your Zwift credentials",
+    href: "https://www.zwift.com/clubs/ZSUN/home",
+    urlLabel: "zwift.com/clubs/ZSUN",
+  },
+];
+
+const racingLinks = [
+  {
+    badge: "ZP",
+    title: "ZwiftPower Club",
+    text: "Only needed if you want to race; log in using your Zwift credentials",
+    href: "https://zwiftpower.com/team.php?do=join&id=161",
+    urlLabel: "zwiftpower.com/team",
+  },
+  {
+    badge: "W",
+    title: "WTRL Registration",
+    text: "Required for WTRL TTT and Zwift Racing League",
+    href: "https://www.wtrl.racing/registration/",
+    urlLabel: "wtrl.racing/registration",
+  },
+  {
+    badge: "ZR",
+    title: "ZwiftRacing.app",
+    text: "Required for Ladder League racing",
+    href: "https://www.zwiftracing.app/",
+    urlLabel: "zwiftracing.app",
+  },
+  {
+    badge: "L",
+    title: "Ladder League Sign-in",
+    text: "Required to view club league positions",
+    href: "https://ladder.cycleracing.club/signin",
+    urlLabel: "ladder.cycleracing.club",
+  },
+];
+
+const performanceLinks = [
+  {
+    badge: "PH",
+    title: "Performance Hub",
+    text: "ZSUN tools, guides and performance resources",
+    href: "https://zsun-performance-hub.lalieustewart.workers.dev",
+    urlLabel: "Performance Hub",
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="announcement"></Fragment>
+
+  <ZsunPageHero
+    eyebrow="Useful links"
+    title='<span class="zsun-gradient-text">Resources</span>'
+    lead="Useful links and information for ZSUN members: club communication, upcoming events, racing registration and performance support."
+    actions={[
+      {
+        text: "View club links",
+        href: "#general-club-links",
+        variant: "primary",
+      },
+      {
+        text: "Open Performance Hub",
+        href: "https://zsun-performance-hub.lalieustewart.workers.dev",
+        variant: "secondary",
+        target: "_blank",
+      },
+    ]}
+    class="zsun-page-hero-with-visual"
+  >
+    <div
+      slot="visual"
+      class="zsun-hero-visual zsun-hero-visual-resources"
+      aria-hidden="true"
+    >
+      <div class="zsun-resource-visual-stack">
+        <div class="zsun-resource-visual-card">
+          <strong>Club links</strong>
+          <span>Discord and events</span>
+        </div>
+        <div class="zsun-resource-visual-card">
+          <strong>Race accounts</strong>
+          <span>WTRL, ZP and more</span>
+        </div>
+        <div class="zsun-resource-visual-card">
+          <strong>Performance</strong>
+          <span>Tools and rider guides</span>
+        </div>
+      </div>
+      <div class="zsun-hero-badge">Link directory</div>
+      <div class="zsun-hero-metric">
+        <strong>Resources</strong>
+        <span>Club links, racing access and performance support</span>
+      </div>
+    </div>
+  </ZsunPageHero>
+
+  <ZsunSection
+    id="general-club-links"
+    eyebrow="General Club Links"
+    title="Communication, events and the club itself."
+    lead="Join the ZSUN Discord server, find upcoming ZSUN rides and events, and connect with the ZSUN Zwift Club. Some Zwift links require you to log in using your Zwift credentials."
+  >
+    <div class="zsun-resource-panel">
+      <div class="zsun-resource-stack">
+        {
+          clubLinks.map((link) => (
+            <a href={link.href} target="_blank" class="zsun-resource-link">
+              <span class="zsun-resource-badge">{link.badge}</span>
+              <span class="zsun-resource-copy">
+                <strong>{link.title}</strong>
+                <em>{link.text}</em>
+              </span>
+              <span class="zsun-resource-url">{link.urlLabel}</span>
+              <span class="zsun-resource-arrow">Open</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </ZsunSection>
+
+  <ZsunSection
+    eyebrow="Racing Registration Links"
+    title="Simple access to the main racing platforms."
+    lead="Use this section as a link directory for racing accounts and registration platforms. The Race page explains when and why each platform is needed."
+    variant="alt"
+  >
+    <div class="zsun-resource-panel">
+      <p class="zsun-resource-note">
+        Advice, guidance and assistance are available through the ZSUN Discord
+        server. New racers should ask there before registering if they are
+        unsure which accounts they need.
+      </p>
+      <div class="zsun-resource-stack">
+        {
+          racingLinks.map((link) => (
+            <a href={link.href} target="_blank" class="zsun-resource-link">
+              <span class="zsun-resource-badge">{link.badge}</span>
+              <span class="zsun-resource-copy">
+                <strong>{link.title}</strong>
+                <em>{link.text}</em>
+              </span>
+              <span class="zsun-resource-url">{link.urlLabel}</span>
+              <span class="zsun-resource-arrow">Open</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </ZsunSection>
+
+  <ZsunSection
+    eyebrow="Performance Links"
+    title="Performance tools and rider support."
+    lead="ZSUN performance tools and rider resources are available through the Performance Hub."
+  >
+    <div class="zsun-two-panel">
+      <div class="zsun-resource-panel zsun-resource-panel-compact">
+        <div class="zsun-resource-stack">
+          {
+            performanceLinks.map((link) => (
+              <a href={link.href} target="_blank" class="zsun-resource-link">
+                <span class="zsun-resource-badge">{link.badge}</span>
+                <span class="zsun-resource-copy">
+                  <strong>{link.title}</strong>
+                  <em>{link.text}</em>
+                </span>
+                <span class="zsun-resource-url">{link.urlLabel}</span>
+                <span class="zsun-resource-arrow">Open</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <aside class="zsun-boundary-card zsun-resource-help">
+        <strong>Need help or have questions?</strong>
+        <span
+          >Join the ZSUN Discord server. The community is there to help.</span
+        >
+        <div class="zsun-action-row">
+          <Button
+            text="Join Discord"
+            href="https://zsunr.com/discord"
+            variant="primary"
+            target="_blank"
+          />
+        </div>
+      </aside>
+    </div>
+  </ZsunSection>
+</Layout>
