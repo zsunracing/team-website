@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://team-website.zsun-racing-team.workers.dev/sitemap-index.xml

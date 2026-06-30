@@ -1,6 +1,7 @@
-import { defineCollection } from 'astro:content';
-import { z } from 'astro/zod';
-import { glob } from 'astro/loaders';
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
+import { glob } from "astro/loaders";
+import { APP_BLOG } from "astrowind:config";
 
 const metadataDefinition = () =>
   z
@@ -29,7 +30,7 @@ const metadataDefinition = () =>
                 url: z.string(),
                 width: z.number().optional(),
                 height: z.number().optional(),
-              })
+              }),
             )
             .optional(),
           locale: z.string().optional(),
@@ -47,25 +48,25 @@ const metadataDefinition = () =>
     })
     .optional();
 
-const postCollection = defineCollection({
-  loader: glob({ pattern: ['*.md', '*.mdx'], base: 'src/data/post' }),
-  schema: z.object({
-    publishDate: z.date().optional(),
-    updateDate: z.date().optional(),
-    draft: z.boolean().optional(),
+export const collections = APP_BLOG.isEnabled
+  ? {
+      post: defineCollection({
+        loader: glob({ pattern: ["*.md", "*.mdx"], base: "src/data/post" }),
+        schema: z.object({
+          publishDate: z.date().optional(),
+          updateDate: z.date().optional(),
+          draft: z.boolean().optional(),
 
-    title: z.string(),
-    excerpt: z.string().optional(),
-    image: z.string().optional(),
+          title: z.string(),
+          excerpt: z.string().optional(),
+          image: z.string().optional(),
 
-    category: z.string().optional(),
-    tags: z.array(z.string()).optional(),
-    author: z.string().optional(),
+          category: z.string().optional(),
+          tags: z.array(z.string()).optional(),
+          author: z.string().optional(),
 
-    metadata: metadataDefinition(),
-  }),
-});
-
-export const collections = {
-  post: postCollection,
-};
+          metadata: metadataDefinition(),
+        }),
+      }),
+    }
+  : {};
