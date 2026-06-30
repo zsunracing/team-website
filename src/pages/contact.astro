@@ -104,40 +104,15 @@ const routeCards: Array<{
     ]}
     class="zsun-page-hero-with-visual"
   >
-    <div
+    <Image
       slot="visual"
-      class="zsun-hero-visual zsun-hero-visual-photo zsun-hero-visual-resources"
-      aria-hidden="true"
-    >
-      <div class="zsun-hero-photo-frame">
-        <Image
-          src={contactHeroImage}
-          alt=""
-          widths={[480, 720, 960, 1280]}
-          layout="cover"
-          style="width:100%;height:100%;object-position:center 44%;"
-        />
-      </div>
-      <div class="zsun-resource-visual-stack">
-        <div class="zsun-resource-visual-card">
-          <strong>Join</strong>
-          <span>Start with Discord and the Zwift Club</span>
-        </div>
-        <div class="zsun-resource-visual-card">
-          <strong>Ride or race</strong>
-          <span>Find the route that matches your goal</span>
-        </div>
-        <div class="zsun-resource-visual-card">
-          <strong>Ask in Discord</strong>
-          <span>Get help from riders, captains and organisers</span>
-        </div>
-      </div>
-      <div class="zsun-hero-badge">Route finder</div>
-      <div class="zsun-hero-metric">
-        <strong>Discord first</strong>
-        <span>Visible club support in the right channels</span>
-      </div>
-    </div>
+      src={contactHeroImage}
+      alt=""
+      class="zsun-page-hero-image"
+      widths={[480, 720, 960, 1280]}
+      layout="cover"
+      style="object-position:center 44%;"
+    />
   </ZsunPageHero>
 
   <ZsunSection

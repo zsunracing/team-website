@@ -150,26 +150,15 @@ const results = [
     ]}
     class="zsun-page-hero-with-visual"
   >
-    <div
+    <Image
       slot="visual"
-      class="zsun-hero-visual zsun-hero-visual-photo zsun-hero-visual-race"
-      aria-hidden="true"
-    >
-      <div class="zsun-hero-photo-frame">
-        <Image
-          src={raceHeroImage}
-          alt=""
-          widths={[480, 720, 960, 1280]}
-          layout="cover"
-          style="width:100%;height:100%;object-position:center 42%;"
-        />
-      </div>
-      <div class="zsun-hero-badge">Team race prep</div>
-      <div class="zsun-hero-metric">
-        <strong>Fair racing</strong>
-        <span>Teamwork, pacing and communication</span>
-      </div>
-    </div>
+      src={raceHeroImage}
+      alt=""
+      class="zsun-page-hero-image"
+      widths={[480, 720, 960, 1280]}
+      layout="cover"
+      style="object-position:center 42%;"
+    />
   </ZsunPageHero>
 
   <ZsunSection

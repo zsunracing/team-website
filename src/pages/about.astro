@@ -130,40 +130,15 @@ const pathways: Array<{
     ]}
     class="zsun-page-hero-with-visual"
   >
-    <div
+    <Image
       slot="visual"
-      class="zsun-hero-visual zsun-hero-visual-photo zsun-hero-visual-resources"
-      aria-hidden="true"
-    >
-      <div class="zsun-hero-photo-frame">
-        <Image
-          src={aboutHeroImage}
-          alt=""
-          widths={[480, 720, 960, 1280]}
-          layout="cover"
-          style="width:100%;height:100%;object-position:center 45%;"
-        />
-      </div>
-      <div class="zsun-resource-visual-stack">
-        <div class="zsun-resource-visual-card">
-          <strong>Global community</strong>
-          <span>Friendly riders, racers and team support</span>
-        </div>
-        <div class="zsun-resource-visual-card">
-          <strong>Shared mission</strong>
-          <span>Ride, race and improve together</span>
-        </div>
-        <div class="zsun-resource-visual-card">
-          <strong>Belonging</strong>
-          <span>Community matters as much as the result</span>
-        </div>
-      </div>
-      <div class="zsun-hero-badge">Community first</div>
-      <div class="zsun-hero-metric">
-        <strong>ZSUN</strong>
-        <span>Friendly riding, fair racing and practical support</span>
-      </div>
-    </div>
+      src={aboutHeroImage}
+      alt=""
+      class="zsun-page-hero-image"
+      widths={[480, 720, 960, 1280]}
+      layout="cover"
+      style="object-position:center 45%;"
+    />
   </ZsunPageHero>
 
   <ZsunSection

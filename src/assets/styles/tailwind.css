@@ -58,13 +58,13 @@
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 font-black text-center text-base text-white transition ease-in duration-200 cursor-pointer focus:ring-orange-400 focus:ring-offset-2 focus:ring-2 focus:ring-offset-[#07090f] hover:bg-white/15 hover:border-white/25;
+  @apply inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 font-extrabold text-center text-base text-white transition ease-in duration-200 cursor-pointer focus:ring-orange-400 focus:ring-offset-2 focus:ring-2 focus:ring-offset-[#07090f] hover:bg-white/15 hover:border-white/25;
   padding: 12px 18px;
-  line-height: 1.2;
+  line-height: var(--zsun-type-line-body);
 }
 
 @utility btn-primary {
-  @apply btn border-0 bg-[linear-gradient(135deg,var(--zsun-red),var(--zsun-orange))] text-white shadow-[0_16px_34px_rgb(239_35_60_/_24%)] hover:shadow-[0_18px_42px_rgb(239_35_60_/_32%)] hover:brightness-110;
+  @apply btn border-0 bg-[linear-gradient(135deg,var(--zsun-red),var(--zsun-orange))] font-extrabold text-white shadow-[0_16px_34px_rgb(239_35_60_/_24%)] hover:shadow-[0_18px_42px_rgb(239_35_60_/_32%)] hover:brightness-110;
 }
 
 @utility btn-secondary {
@@ -140,11 +140,22 @@ html {
 }
 
 body {
+  --zsun-type-line-body: 1.55;
+  --zsun-type-size-brand: 1.45rem;
+  --zsun-type-size-eyebrow: 0.82rem;
+  --zsun-type-size-hero: clamp(2.7rem, 6vw, 5.7rem);
+  --zsun-type-size-lead: clamp(1.05rem, 1.8vw, 1.25rem);
+  --zsun-type-size-section: clamp(2rem, 3.5vw, 3.1rem);
+  --zsun-type-size-card-title: 1.25rem;
+  --zsun-type-size-card-body: 1rem;
+  --zsun-type-size-button-small: 0.9rem;
+  --zsun-type-size-footer-link: 1rem;
   background:
     radial-gradient(circle at 20% 0%, rgb(239 35 60 / 18%), transparent 32%),
     radial-gradient(circle at 80% 8%, rgb(255 138 0 / 16%), transparent 26%),
     var(--zsun-bg);
   color: var(--zsun-text);
+  line-height: var(--zsun-type-line-body);
 }
 
 .zsun-container {
@@ -167,7 +178,7 @@ body {
   align-items: center;
   gap: 14px;
   color: white;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.02em;
 }
 
@@ -178,7 +189,7 @@ body {
 }
 
 .zsun-logo-text {
-  font-size: 1.45rem;
+  font-size: var(--zsun-type-size-brand);
 }
 
 .zsun-nav-link {
@@ -210,7 +221,7 @@ body {
 
 .zsun-header-action {
   padding: 10px 18px;
-  font-size: 0.92rem;
+  font-size: var(--zsun-type-size-button-small);
 }
 
 .zsun-page-hero {
@@ -228,8 +239,8 @@ body {
   max-width: 920px;
   color: white;
   font-family: var(--aw-font-heading), ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(2.35rem, 5vw, 5rem);
-  font-weight: 900;
+  font-size: var(--zsun-type-size-hero);
+  font-weight: 700;
   letter-spacing: -0.065em;
   line-height: 0.94;
 }
@@ -244,7 +255,7 @@ body {
 .zsun-lead {
   max-width: 70ch;
   color: #d7dcec;
-  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  font-size: var(--zsun-type-size-lead);
   line-height: 1.62;
 }
 
@@ -257,8 +268,8 @@ body {
   border-radius: 999px;
   background: rgb(239 35 60 / 14%);
   color: white;
-  font-size: 0.82rem;
-  font-weight: 950;
+  font-size: var(--zsun-type-size-eyebrow);
+  font-weight: 800;
   letter-spacing: 0.08em;
   padding: 7px 12px;
   text-transform: uppercase;
@@ -295,8 +306,8 @@ body {
 .zsun-feature-band h2 {
   margin: 0;
   color: white;
-  font-size: clamp(1.8rem, 2.5vw, 2.7rem);
-  font-weight: 900;
+  font-size: var(--zsun-type-size-section);
+  font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1;
 }
@@ -304,6 +315,7 @@ body {
 .zsun-section-head p {
   max-width: 60ch;
   color: var(--zsun-muted);
+  font-size: var(--zsun-type-size-card-body);
 }
 
 .zsun-grid {
@@ -335,8 +347,8 @@ body {
 .zsun-image-card h3 {
   margin: 0 0 8px;
   color: white;
-  font-size: 1.25rem;
-  font-weight: 900;
+  font-size: var(--zsun-type-size-card-title);
+  font-weight: 700;
   line-height: 1.15;
 }
 
@@ -344,6 +356,7 @@ body {
 .zsun-image-card p {
   margin: 0 0 14px;
   color: var(--zsun-muted);
+  font-size: var(--zsun-type-size-card-body);
 }
 
 .zsun-image-card {
@@ -428,7 +441,7 @@ body {
 .zsun-generated-visual span {
   color: white;
   font-size: 2.2rem;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.04em;
 }
 
@@ -439,7 +452,7 @@ body {
 
 .btn-small {
   padding: 9px 13px;
-  font-size: 0.9rem;
+  font-size: var(--zsun-type-size-button-small);
 }
 
 .zsun-feature-band {
@@ -497,7 +510,7 @@ body {
   background: rgb(255 255 255 / 6%);
   color: #dfe4f3;
   font-size: 0.82rem;
-  font-weight: 900;
+  font-weight: 600;
   padding: 6px 10px;
 }
 
@@ -518,7 +531,7 @@ body {
   top: 22px;
   color: rgb(255 255 255 / 90%);
   font-size: clamp(2.6rem, 6vw, 5rem);
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.08em;
 }
 
@@ -566,6 +579,7 @@ body {
 .zsun-footer-brand p {
   max-width: 46ch;
   margin: 12px 0 0;
+  font-size: var(--zsun-type-size-card-body);
 }
 
 .zsun-footer-secondary {
@@ -573,14 +587,14 @@ body {
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 14px;
-  font-size: 0.9rem;
+  font-size: var(--zsun-type-size-footer-link);
 }
 
 .zsun-footer-column h2 {
   margin: 0 0 10px;
   color: white;
   font-size: 1rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .zsun-footer-column ul {
@@ -594,6 +608,7 @@ body {
 .zsun-footer-column a,
 .zsun-footer-secondary a {
   color: var(--zsun-muted);
+  font-size: var(--zsun-type-size-footer-link);
   transition: color 180ms ease;
 }
 
@@ -646,6 +661,17 @@ body {
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
   gap: 28px;
   align-items: center;
+}
+
+.zsun-page-hero-image {
+  display: block;
+  width: 100%;
+  height: 360px;
+  border: 1px solid var(--zsun-line);
+  border-radius: 28px;
+  background: #0a0d15;
+  box-shadow: var(--zsun-shadow);
+  object-fit: cover;
 }
 
 .zsun-hero-visual {
@@ -721,7 +747,7 @@ body {
   background: rgb(255 255 255 / 8%);
   color: white;
   font-size: 0.8rem;
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: 0.08em;
   padding: 8px 12px;
   text-transform: uppercase;
@@ -743,7 +769,7 @@ body {
   display: block;
   color: white;
   font-size: 1.3rem;
-  font-weight: 950;
+  font-weight: 700;
 }
 
 .zsun-hero-metric span {
@@ -880,14 +906,14 @@ body {
   background: linear-gradient(135deg, var(--zsun-red), var(--zsun-orange));
   color: #07090f;
   font-size: 1.05rem;
-  font-weight: 950;
+  font-weight: 700;
 }
 
 .zsun-hero-step span {
   display: block;
   color: white;
   font-size: 1.05rem;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .zsun-grid-four {
@@ -933,7 +959,7 @@ body {
 .zsun-link-card strong {
   color: white;
   font-size: 1rem;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .zsun-audience-row span,
@@ -954,6 +980,52 @@ body {
   border-color: rgb(255 138 0 / 44%);
   background: rgb(255 255 255 / 6%);
   transform: translateY(-2px);
+}
+
+.ride-audience-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--zsun-line);
+  border-bottom: 1px solid var(--zsun-line);
+}
+
+.ride-audience-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(180px, 0.42fr) 1fr;
+  gap: 20px;
+  align-items: start;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--zsun-line);
+}
+
+.ride-audience-row:last-child {
+  border-bottom: 0;
+}
+
+.ride-audience-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--zsun-red), var(--zsun-orange));
+  opacity: 0.9;
+}
+
+.ride-audience-row strong {
+  display: block;
+  padding-left: 18px;
+  color: white;
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.ride-audience-row span {
+  display: block;
+  color: var(--zsun-muted);
 }
 
 .zsun-pathway {
@@ -989,7 +1061,7 @@ body {
   );
   color: #07090f;
   font-size: 1.35rem;
-  font-weight: 950;
+  font-weight: 700;
 }
 
 .zsun-step-card h3,
@@ -998,7 +1070,7 @@ body {
   margin: 0 0 10px;
   color: white;
   font-size: 1.5rem;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.03em;
 }
 
@@ -1014,7 +1086,7 @@ body {
   display: inline-flex;
   margin-top: 12px;
   color: white;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .zsun-inline-link:hover {
@@ -1054,7 +1126,7 @@ body {
   left: 16px;
   top: 14px;
   color: var(--zsun-gold);
-  font-weight: 950;
+  font-weight: 700;
 }
 
 .zsun-checklist li::before {
@@ -1094,7 +1166,7 @@ body {
 .zsun-placeholder-window strong {
   color: white;
   font-size: 0.94rem;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .zsun-placeholder-window-copy {
@@ -1140,7 +1212,7 @@ body {
   background: rgb(255 255 255 / 6%);
   color: white;
   font-size: 0.88rem;
-  font-weight: 900;
+  font-weight: 600;
   padding: 10px 14px;
 }
 
@@ -1199,7 +1271,7 @@ body {
   display: inline-flex;
   color: white;
   font-size: 0.82rem;
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1237,7 +1309,7 @@ body {
   margin-top: 18px;
   color: #dfe4f3;
   font-size: 1rem;
-  font-weight: 900;
+  font-weight: 600;
   padding: 12px 14px;
 }
 
@@ -1255,7 +1327,7 @@ body {
   margin-top: 18px;
   color: white;
   font-size: 1.7rem;
-  font-weight: 950;
+  font-weight: 700;
 }
 
 .zsun-device-frame small {
@@ -1320,7 +1392,7 @@ body {
   display: block;
   color: white;
   font-size: 1.2rem;
-  font-weight: 950;
+  font-weight: 700;
 }
 
 .zsun-callout-card p {
@@ -1376,7 +1448,7 @@ body {
   margin-top: 16px;
   color: white;
   font-size: 1.6rem;
-  font-weight: 950;
+  font-weight: 700;
 }
 
 .zsun-coaching-screen small {
@@ -1444,7 +1516,7 @@ body {
   margin: 14px 0 10px;
   color: white;
   font-size: 1.55rem;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.03em;
 }
 
@@ -1472,7 +1544,7 @@ body {
   display: block;
   color: white;
   font-size: 1.05rem;
-  font-weight: 950;
+  font-weight: 600;
 }
 
 .zsun-coach-contact span,
@@ -1519,7 +1591,7 @@ body {
 .zsun-list-grid span strong {
   color: white;
   font-size: 0.96rem;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .zsun-list-grid span em {
@@ -1563,7 +1635,7 @@ body {
   background: rgb(255 255 255 / 6%);
   color: white;
   font-size: 0.8rem;
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: 0.06em;
   padding: 7px 11px;
   text-transform: uppercase;
@@ -1616,7 +1688,7 @@ body {
 .zsun-resource-visual-card strong {
   color: white;
   font-size: 1rem;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .zsun-resource-visual-card span {
@@ -1660,7 +1732,7 @@ body {
   background: linear-gradient(135deg, var(--zsun-red), var(--zsun-orange));
   color: #07090f;
   font-size: 0.92rem;
-  font-weight: 950;
+  font-weight: 700;
 }
 
 .zsun-resource-copy {
@@ -1721,7 +1793,7 @@ body {
 
 .zsun-dashboard-fallback a {
   color: white;
-  font-weight: 900;
+  font-weight: 600;
   transition: color 180ms ease;
 }
 
@@ -1803,10 +1875,21 @@ body {
 
   .zsun-audience-row,
   .zsun-link-card,
+  .ride-audience-row,
   .zsun-step-card,
   .zsun-seasonal-band,
   .zsun-resource-link {
     grid-template-columns: 1fr;
+  }
+
+  .ride-audience-row {
+    gap: 6px;
+    padding: 16px 0;
+  }
+
+  .ride-audience-row strong,
+  .ride-audience-row span {
+    padding-left: 18px;
   }
 
   .zsun-step-number {
