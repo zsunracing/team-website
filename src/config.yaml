@@ -18,7 +18,7 @@ metadata:
   openGraph:
     site_name: ZSUN Racing
     images:
-      - url: "~/assets/images/default.png"
+      - url: "~/assets/images/zsun/zsun-home-hero-01.png"
         width: 1200
         height: 628
     type: website

@@ -225,7 +225,12 @@ const results = [
     <div class="zsun-link-list">
       {
         registrations.map((registration) => (
-          <a href={registration.href} target="_blank" class="zsun-link-card">
+          <a
+            href={registration.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="zsun-link-card"
+          >
             <strong>{registration.title}</strong>
             <span>{registration.text}</span>
           </a>

@@ -135,7 +135,12 @@ const performanceLinks = [
       <div class="zsun-resource-stack">
         {
           clubLinks.map((link) => (
-            <a href={link.href} target="_blank" class="zsun-resource-link">
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="zsun-resource-link"
+            >
               <span class="zsun-resource-badge">{link.badge}</span>
               <span class="zsun-resource-copy">
                 <strong>{link.title}</strong>
@@ -165,7 +170,12 @@ const performanceLinks = [
       <div class="zsun-resource-stack">
         {
           racingLinks.map((link) => (
-            <a href={link.href} target="_blank" class="zsun-resource-link">
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="zsun-resource-link"
+            >
               <span class="zsun-resource-badge">{link.badge}</span>
               <span class="zsun-resource-copy">
                 <strong>{link.title}</strong>
@@ -190,7 +200,12 @@ const performanceLinks = [
         <div class="zsun-resource-stack">
           {
             performanceLinks.map((link) => (
-              <a href={link.href} target="_blank" class="zsun-resource-link">
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="zsun-resource-link"
+              >
                 <span class="zsun-resource-badge">{link.badge}</span>
                 <span class="zsun-resource-copy">
                   <strong>{link.title}</strong>
