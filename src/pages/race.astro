@@ -111,6 +111,8 @@ const results = [
     tag: "League Racing",
     title: "ZRL",
     text: "Zwift Racing League reports, league tables, team performance and rider-level views where available.",
+    href: "/zrl-results",
+    actionText: "Open ZRL page",
   },
   {
     tag: "Club Competition",
@@ -264,7 +266,7 @@ const results = [
 
   <ZsunSection
     title="Race results"
-    lead="Published results windows for the main ZSUN racing activities. Stage 2 keeps these as informational placeholders until dedicated result views exist."
+    lead="Use the dedicated ZRL page for the current dashboard. Other result areas remain informational placeholders while additional result views are still being built."
   >
     <div class="zsun-grid zsun-grid-four">
       {
@@ -276,8 +278,24 @@ const results = [
             class="zsun-detail-card"
           >
             <div class="zsun-placeholder-window">
-              <strong>Results dashboard</strong>
-              <span>Coming soon</span>
+              <div class="zsun-placeholder-window-copy">
+                <strong>
+                  {result.href ? "Live results" : "Results dashboard"}
+                </strong>
+                <span>
+                  {result.href ? "Dedicated page available" : "Coming later"}
+                </span>
+              </div>
+              {result.href ? (
+                <Button
+                  text={result.actionText}
+                  href={result.href}
+                  variant="secondary"
+                  class="btn-small"
+                />
+              ) : (
+                <span>Coming later</span>
+              )}
             </div>
           </ZsunCard>
         ))
