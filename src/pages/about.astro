@@ -1,228 +1,231 @@
 ---
-import Features2 from '~/components/widgets/Features2.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
-import Layout from '~/layouts/PageLayout.astro';
+import Layout from "~/layouts/PageLayout.astro";
+import ZsunCard from "~/components/zsun/ZsunCard.astro";
+import ZsunFeatureBand from "~/components/zsun/ZsunFeatureBand.astro";
+import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
+import ZsunSection from "~/components/zsun/ZsunSection.astro";
+import type { CallToAction } from "~/types";
 
 const metadata = {
-  title: 'About us',
+  title: "About",
+  description:
+    "About ZSUN, a global Zwift cycling community built around friendly riding, fair racing, rider development and belonging.",
 };
+
+const missionCards = [
+  {
+    title: "Who we are",
+    text: "ZSUN brings together riders from around the world, from new Zwifters and social riders to experienced racers competing across major virtual racing series.",
+  },
+  {
+    title: "Why riders stay",
+    text: "People come for the rides and races, but they stay because the club feels welcoming, active and human. The community matters as much as the result.",
+  },
+  {
+    title: "What we do",
+    text: "We support social rides, structured racing, team time trials, rider resources, coaching insight and practical help for riders who want to improve.",
+  },
+  {
+    title: "How ZSUN works",
+    text: "ZSUN is built by riders for riders. Ride leaders, captains, organisers, coaches, admins and volunteers all help keep the club active and well organised.",
+  },
+];
+
+const values = [
+  {
+    title: "Teamwork",
+    text: "We ride, race and improve together. Strong teams are built on clear communication and shared effort.",
+  },
+  {
+    title: "Friendship",
+    text: "ZSUN should feel friendly and welcoming. Real friendship is part of the club, not a bonus extra.",
+  },
+  {
+    title: "Good sportsmanship",
+    text: "Race hard, race fair and respect other riders. Good sportsmanship is expected from everyone.",
+  },
+  {
+    title: "Courtesy",
+    text: "We keep communication constructive, respectful and useful, whether on a social ride, in Discord or during racing.",
+  },
+  {
+    title: "Diversity",
+    text: "Riders of different backgrounds, abilities, countries and goals are welcome. Our diversity makes the club stronger.",
+  },
+  {
+    title: "Honesty",
+    text: "Fair racing, clear communication and transparent behaviour matter.",
+  },
+  {
+    title: "Courage",
+    text: "We encourage riders to take on challenges, support others and keep improving.",
+  },
+];
+
+const pathways: Array<{
+  eyebrow: string;
+  title: string;
+  text: string;
+  action: CallToAction;
+}> = [
+  {
+    eyebrow: "Community rides",
+    title: "Ride socially",
+    text: "Join regular rides, meet other riders and stay connected through Discord and club activity.",
+    action: {
+      text: "Ride with us",
+      href: "/ride",
+      variant: "secondary",
+    },
+  },
+  {
+    eyebrow: "Team racing",
+    title: "Race with a team",
+    text: "Explore ZSUN racing, TTTs, ZRL and the team support available through the racing channels.",
+    action: {
+      text: "Race with us",
+      href: "/race",
+      variant: "secondary",
+    },
+  },
+  {
+    eyebrow: "Rider development",
+    title: "Improve as a rider",
+    text: "Use the Performance Hub, rider resources and coaching options to build knowledge, confidence and performance.",
+    action: {
+      text: "Explore coaching",
+      href: "/coaching",
+      variant: "secondary",
+    },
+  },
+];
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <Fragment slot="announcement"></Fragment>
 
-  <Hero
-    tagline="About us"
-    image={{
-      src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Caos Image',
-    }}
+  <ZsunPageHero
+    eyebrow="About ZSUN"
+    title='<span class="zsun-gradient-text">Ride. Race. Improve. Belong.</span>'
+    lead="ZSUN is an international online cycling community built around friendly riding, fair racing, teamwork and rider development."
+    actions={[
+      {
+        text: "Join ZSUN",
+        href: "/join",
+        variant: "primary",
+      },
+      {
+        text: "Explore social rides",
+        href: "/ride",
+        variant: "secondary",
+      },
+      {
+        text: "Explore racing",
+        href: "/race",
+        variant: "secondary",
+      },
+    ]}
+    class="zsun-page-hero-with-visual"
   >
-    <Fragment slot="title">
-      Elevate your online presence with our <br />
-      <span class="text-accent dark:text-white"> Beautiful Website Templates</span>
-    </Fragment>
+    <div
+      slot="visual"
+      class="zsun-hero-visual zsun-hero-visual-resources"
+      aria-hidden="true"
+    >
+      <div class="zsun-resource-visual-stack">
+        <div class="zsun-resource-visual-card">
+          <strong>Global community</strong>
+          <span>Friendly riders, racers and team support</span>
+        </div>
+        <div class="zsun-resource-visual-card">
+          <strong>Shared mission</strong>
+          <span>Ride, race and improve together</span>
+        </div>
+        <div class="zsun-resource-visual-card">
+          <strong>Belonging</strong>
+          <span>Community matters as much as the result</span>
+        </div>
+      </div>
+      <div class="zsun-hero-badge">Community first</div>
+      <div class="zsun-hero-metric">
+        <strong>ZSUN</strong>
+        <span>Friendly riding, fair racing and practical support</span>
+      </div>
+    </div>
+  </ZsunPageHero>
 
-    <Fragment slot="subtitle">
-      Donec efficitur, ipsum quis congue luctus, mauris magna convallis mauris, eu auctor nisi lectus non augue. Donec
-      quis lorem non massa vulputate efficitur ac at turpis. Sed tincidunt ex a nunc convallis, et lobortis nisi tempus.
-      Suspendisse vitae nisi eget tortor luctus maximus sed non lectus.
-    </Fragment>
-  </Hero>
+  <ZsunSection
+    title="Mission"
+    lead="ZSUN exists to help riders enjoy cycling, feel part of a community, and keep developing through shared rides, racing, learning and support."
+  >
+    <div class="zsun-grid zsun-grid-two">
+      {
+        missionCards.map((card) => (
+          <ZsunCard
+            title={card.title}
+            text={card.text}
+            class="zsun-detail-card"
+          />
+        ))
+      }
+    </div>
+  </ZsunSection>
 
-  <!-- Stats Widget ****************** -->
+  <ZsunSection
+    title="What we value"
+    lead="These values shape how we ride, race, communicate and support each other."
+    variant="alt"
+  >
+    <div class="zsun-grid zsun-grid-three">
+      {
+        values.map((value) => (
+          <ZsunCard
+            title={value.title}
+            text={value.text}
+            class="zsun-detail-card zsun-compact-card"
+          />
+        ))
+      }
+    </div>
+  </ZsunSection>
 
-  <Stats
-    title="Statistics about us"
-    stats={[
-      { title: 'Offices', amount: '4' },
-      { title: 'Employees', amount: '248' },
-      { title: 'Templates', amount: '12' },
-      { title: 'Awards', amount: '24' },
-    ]}
-  />
+  <ZsunSection>
+    <ZsunFeatureBand
+      eyebrow="Community-led"
+      title="Organised, supportive and still rider-led."
+      lead="ZSUN is organised enough to help riders find events, teams and support, while staying grounded in the simple idea that cycling is better when people do it together."
+      pills={["Social rides", "Team racing", "Rider support", "Belonging"]}
+      visualLabel="Together"
+    >
+      <p class="zsun-support-copy">
+        You do not have to race to belong at ZSUN. Some riders come for social
+        rides and community, others come for structured racing, and many do
+        both.
+      </p>
+      <div class="zsun-action-row">
+        <a href="/join" class="btn-primary">Start with ZSUN</a>
+        <a href="/resources" class="btn-secondary">View resources</a>
+      </div>
+    </ZsunFeatureBand>
+  </ZsunSection>
 
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    title="Our templates"
-    subtitle="Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod."
-    columns={3}
-    isBeforeContent={true}
-    items={[
+  <ZsunSection
+    title="Find your route into ZSUN"
+    lead="Whether you want relaxed group rides, team racing or support to improve, ZSUN gives you a clear place to start."
+    variant="alt"
+  >
+    <div class="zsun-grid zsun-grid-three">
       {
-        title: 'Educational',
-        description:
-          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Interior Design',
-        description:
-          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Photography',
-        description:
-          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
-        icon: 'tabler:template',
-      },
-    ]}
-  />
-
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    columns={3}
-    isAfterContent={true}
-    items={[
-      {
-        title: 'E-commerce',
-        description:
-          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Blog',
-        description:
-          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Business',
-        description:
-          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Medical',
-        description:
-          'Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.',
-        icon: 'tabler:template',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Colorful Image',
-    }}
-  />
-
-  <!-- Steps2 Widget ****************** -->
-
-  <Steps2
-    title="Our values"
-    subtitle="Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus. Nulla facilisi. Vestibulum malesuada lacus."
-    items={[
-      {
-        title: 'Customer-centric approach',
-        description:
-          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
-      },
-      {
-        title: 'Constant Improvement',
-        description:
-          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
-      },
-      {
-        title: 'Ethical Practices',
-        description:
-          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-      },
-    ]}
-  />
-
-  <!-- Steps2 Widget ****************** -->
-
-  <Steps2
-    title="Achievements"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
-    isReversed={true}
-    callToAction={{
-      text: 'See more',
-      href: '/',
-    }}
-    items={[
-      {
-        title: 'Global reach',
-        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
-        icon: 'tabler:globe',
-      },
-      {
-        title: 'Positive customer feedback and reviews',
-        description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
-        icon: 'tabler:message-star',
-      },
-      {
-        title: 'Awards and recognition as industry experts',
-        description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
-        icon: 'tabler:award',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Our locations"
-    tagline="Find us"
-    columns={4}
-    items={[
-      {
-        title: 'EE.UU',
-        description: '1234 Lorem Ipsum St, 12345, Miami',
-      },
-      {
-        title: 'Spain',
-        description: '5678 Lorem Ipsum St, 56789, Madrid',
-      },
-      {
-        title: 'Australia',
-        description: '9012 Lorem Ipsum St, 90123, Sydney',
-      },
-      {
-        title: 'Brazil',
-        description: '3456 Lorem Ipsum St, 34567, São Paulo',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Technical Support"
-    tagline="Contact us"
-    columns={2}
-    items={[
-      {
-        title: 'Chat with us',
-        description:
-          'Integer luctus laoreet libero, auctor varius purus rutrum sit amet. Ut nec molestie nisi, quis eleifend mi.',
-        icon: 'tabler:messages',
-      },
-      {
-        title: 'Call us',
-        description:
-          'Mauris faucibus finibus orci, in posuere elit viverra non. In hac habitasse platea dictumst. Cras lobortis metus a hendrerit congue.',
-        icon: 'tabler:headset',
-      },
-    ]}
-  />
+        pathways.map((pathway) => (
+          <ZsunCard
+            eyebrow={pathway.eyebrow}
+            title={pathway.title}
+            text={pathway.text}
+            action={pathway.action}
+            class="zsun-detail-card"
+          />
+        ))
+      }
+    </div>
+  </ZsunSection>
 </Layout>

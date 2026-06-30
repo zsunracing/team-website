@@ -1,79 +1,182 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
-import Features2 from '~/components/widgets/Features2.astro';
+import Layout from "~/layouts/PageLayout.astro";
+import ZsunCard from "~/components/zsun/ZsunCard.astro";
+import ZsunFeatureBand from "~/components/zsun/ZsunFeatureBand.astro";
+import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
+import ZsunSection from "~/components/zsun/ZsunSection.astro";
+import type { CallToAction } from "~/types";
 
 const metadata = {
-  title: 'Contact',
+  title: "Contact",
+  description:
+    "Find the right ZSUN route for joining, social rides, racing, coaching, rider resources and general club questions.",
 };
+
+const routeCards: Array<{
+  eyebrow: string;
+  title: string;
+  text: string;
+  action: CallToAction;
+}> = [
+  {
+    eyebrow: "Start here",
+    title: "Join ZSUN",
+    text: "New to ZSUN? Start with the simple Discord and Zwift Club joining steps.",
+    action: {
+      text: "View joining steps",
+      href: "/join",
+      variant: "secondary",
+    },
+  },
+  {
+    eyebrow: "Club rides",
+    title: "Social rides",
+    text: "Looking for group rides, ride etiquette, Discord communication or weekly events?",
+    action: {
+      text: "Explore social rides",
+      href: "/ride",
+      variant: "secondary",
+    },
+  },
+  {
+    eyebrow: "Competition",
+    title: "Racing",
+    text: "For ZRL, WTRL TTT, Ladder League, ZwiftPower and race team guidance.",
+    action: {
+      text: "Explore racing",
+      href: "/race",
+      variant: "secondary",
+    },
+  },
+  {
+    eyebrow: "Performance",
+    title: "Coaching and tools",
+    text: "For 1-to-1 coaching, the Performance Hub, rider guides and ZSUN Coaching support.",
+    action: {
+      text: "View coaching support",
+      href: "/coaching",
+      variant: "secondary",
+    },
+  },
+  {
+    eyebrow: "Useful links",
+    title: "Rider resources",
+    text: "Useful club links, racing registration links, performance tools and rider support resources.",
+    action: {
+      text: "Open resources",
+      href: "/resources",
+      variant: "secondary",
+    },
+  },
+  {
+    eyebrow: "General help",
+    title: "General club question",
+    text: "For most ZSUN questions, Discord is the best place to ask because it gets your question in front of the right riders, captains or organisers.",
+    action: {
+      text: "Use Discord via Join",
+      href: "/join",
+      variant: "secondary",
+    },
+  },
+];
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
+  <Fragment slot="announcement"></Fragment>
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
-
-  <ContactUs
-    id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
-    inputs={[
+  <ZsunPageHero
+    eyebrow="Contact"
+    title='<span class="zsun-gradient-text">Find the right ZSUN route.</span>'
+    lead="Whether you want to join, ride socially, race with a team, use ZSUN Coaching tools or ask a general club question, this page points you to the best next step."
+    actions={[
       {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
+        text: "Start with joining steps",
+        href: "/join",
+        variant: "primary",
       },
       {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
+        text: "Open resources",
+        href: "/resources",
+        variant: "secondary",
       },
     ]}
-    textarea={{
-      label: 'Message',
-    }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="Our support team typically responds within 24 business hours."
-  />
+    class="zsun-page-hero-with-visual"
+  >
+    <div
+      slot="visual"
+      class="zsun-hero-visual zsun-hero-visual-resources"
+      aria-hidden="true"
+    >
+      <div class="zsun-resource-visual-stack">
+        <div class="zsun-resource-visual-card">
+          <strong>Join</strong>
+          <span>Start with Discord and the Zwift Club</span>
+        </div>
+        <div class="zsun-resource-visual-card">
+          <strong>Ride or race</strong>
+          <span>Find the route that matches your goal</span>
+        </div>
+        <div class="zsun-resource-visual-card">
+          <strong>Ask in Discord</strong>
+          <span>Get help from riders, captains and organisers</span>
+        </div>
+      </div>
+      <div class="zsun-hero-badge">Route finder</div>
+      <div class="zsun-hero-metric">
+        <strong>Discord first</strong>
+        <span>Visible club support in the right channels</span>
+      </div>
+    </div>
+  </ZsunPageHero>
 
-  <!-- Features2 Widget ************** -->
+  <ZsunSection
+    title="Choose your route"
+    lead="Use the page that best matches what you need, and start with Discord when you want the community to point you in the right direction."
+  >
+    <div class="zsun-grid zsun-grid-three">
+      {
+        routeCards.map((card) => (
+          <ZsunCard
+            eyebrow={card.eyebrow}
+            title={card.title}
+            text={card.text}
+            action={card.action}
+            class="zsun-detail-card"
+          />
+        ))
+      }
+    </div>
+  </ZsunSection>
 
-  <Features2
-    title="We are here to help!"
-    items={[
-      {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
-      },
-      {
-        title: 'Contact sales',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
-      },
-      {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Email',
-        description: 'contact@support.com',
-        icon: 'tabler:mail',
-      },
-      {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
-      },
-    ]}
-  />
+  <ZsunSection variant="alt">
+    <ZsunFeatureBand
+      eyebrow="Discord first"
+      title="Most contact starts inside the community."
+      lead="ZSUN is a rider-led club. Discord keeps ride, race and club conversations visible to the people who can help, rather than hiding useful answers in private messages."
+      pills={[
+        "Social ride comms",
+        "Race organisation",
+        "Team voice",
+        "Rider support",
+      ]}
+      visualLabel="Discord"
+    >
+      <p class="zsun-support-copy">
+        Not sure where to ask? Join Discord first and use the most relevant
+        channel. Riders and organisers can then point you towards social rides,
+        racing, resources or coaching support.
+      </p>
+      <div class="zsun-action-row">
+        <a
+          href="https://zsunr.com/discord"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary"
+        >
+          Open Discord
+        </a>
+        <a href="/join" class="btn-secondary">View join steps</a>
+      </div>
+    </ZsunFeatureBand>
+  </ZsunSection>
 </Layout>

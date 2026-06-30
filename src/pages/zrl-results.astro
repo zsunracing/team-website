@@ -1,0 +1,101 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import Button from "~/components/ui/Button.astro";
+import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
+import ZsunSection from "~/components/zsun/ZsunSection.astro";
+
+const metadata = {
+  title: "ZRL Results",
+  description:
+    "ZSUN Zwift Racing League results dashboard with available team, rider and table views.",
+};
+
+const dashboardUrl = "https://data.zsunr.com/zrl/";
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="announcement"></Fragment>
+
+  <ZsunPageHero
+    eyebrow="Race results"
+    title='<span class="zsun-gradient-text">ZRL Results Dashboard</span>'
+    lead="A clean route into the ZSUN Zwift Racing League dashboard, with embedded access to team, rider and table views plus a direct fallback link."
+    actions={[
+      {
+        text: "Jump to dashboard",
+        href: "#zrl-dashboard",
+        variant: "primary",
+      },
+      {
+        text: "Open dashboard directly",
+        href: dashboardUrl,
+        variant: "secondary",
+        target: "_blank",
+      },
+    ]}
+    class="zsun-page-hero-with-visual"
+  >
+    <div
+      slot="visual"
+      class="zsun-hero-visual zsun-hero-visual-resources"
+      aria-hidden="true"
+    >
+      <div class="zsun-resource-visual-stack">
+        <div class="zsun-resource-visual-card">
+          <strong>Teams</strong>
+          <span>Club standings and event views</span>
+        </div>
+        <div class="zsun-resource-visual-card">
+          <strong>Riders</strong>
+          <span>Individual results and league context</span>
+        </div>
+        <div class="zsun-resource-visual-card">
+          <strong>Tables</strong>
+          <span>Direct access to the published dashboard</span>
+        </div>
+      </div>
+      <div class="zsun-hero-badge">Live data</div>
+      <div class="zsun-hero-metric">
+        <strong>ZRL</strong>
+        <span>Embedded dashboard with a direct fallback route</span>
+      </div>
+    </div>
+  </ZsunPageHero>
+
+  <ZsunSection
+    id="zrl-dashboard"
+    eyebrow="Embedded dashboard"
+    title="Live ZRL tables, teams and rider views."
+    lead="This page embeds the ZSUN ZRL dashboard directly. If the frame does not load in your browser, use the direct link below."
+  >
+    <div class="zsun-resource-panel">
+      <p class="zsun-support-copy">
+        The dashboard is hosted externally at <strong>data.zsunr.com</strong>.
+        Embedded access is provided here for convenience, with a direct link as
+        a fallback.
+      </p>
+      <div class="zsun-dashboard-frame-wrap">
+        <iframe
+          class="zsun-dashboard-frame"
+          src={dashboardUrl}
+          title="ZSUN ZRL Results Dashboard"
+          loading="lazy"></iframe>
+      </div>
+      <p class="zsun-dashboard-fallback">
+        If the dashboard does not load inside this page,
+        <a href={dashboardUrl} target="_blank" rel="noopener noreferrer">
+          open the ZRL dashboard directly
+        </a>.
+      </p>
+      <div class="zsun-action-row">
+        <Button text="Back to Race" href="/race" variant="secondary" />
+        <Button
+          text="Open Discord"
+          href="https://zsunr.com/discord"
+          variant="primary"
+          target="_blank"
+        />
+      </div>
+    </div>
+  </ZsunSection>
+</Layout>

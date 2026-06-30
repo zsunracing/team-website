@@ -1006,6 +1006,11 @@ body {
   font-weight: 900;
 }
 
+.zsun-placeholder-window-copy {
+  display: grid;
+  gap: 4px;
+}
+
 .zsun-placeholder-window span {
   color: #d7dcec;
   font-size: 0.9rem;
@@ -1548,6 +1553,40 @@ body {
   align-content: start;
 }
 
+.zsun-dashboard-frame-wrap {
+  margin-top: 22px;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 24px;
+  background: rgb(7 9 15 / 78%);
+  box-shadow: 0 20px 48px rgb(0 0 0 / 25%);
+}
+
+.zsun-dashboard-frame {
+  display: block;
+  width: 100%;
+  height: 78vh;
+  min-height: 720px;
+  border: 0;
+  background: #07090f;
+}
+
+.zsun-dashboard-fallback {
+  margin: 18px 0 0;
+  color: var(--zsun-muted);
+  line-height: 1.65;
+}
+
+.zsun-dashboard-fallback a {
+  color: white;
+  font-weight: 900;
+  transition: color 180ms ease;
+}
+
+.zsun-dashboard-fallback a:hover {
+  color: #ffd49a;
+}
+
 @media (max-width: 1100px) {
   .zsun-grid-two,
   .zsun-grid-four {
@@ -1651,5 +1690,10 @@ body {
   .zsun-resource-visual-card:nth-child(2),
   .zsun-resource-visual-card:nth-child(3) {
     width: 100%;
+  }
+
+  .zsun-dashboard-frame {
+    height: 70vh;
+    min-height: 560px;
   }
 }
