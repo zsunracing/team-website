@@ -2,12 +2,12 @@
 import Layout from "~/layouts/PageLayout.astro";
 import Image from "~/components/common/Image.astro";
 import Button from "~/components/ui/Button.astro";
-import ZsunCard from "~/components/zsun/ZsunCard.astro";
 import ZsunFeatureBand from "~/components/zsun/ZsunFeatureBand.astro";
 import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
 import ZsunSection from "~/components/zsun/ZsunSection.astro";
 import coachingHeroImage from "~/assets/images/zsun/zsun-coaching-rider-02.png";
 import coachingFlagImage from "~/assets/images/zsun/zsun-coaching-flag.png";
+import abccLogoImage from "~/assets/images/zsun/abcc-logo.png";
 
 const metadata = {
   title: "Coaching",
@@ -18,19 +18,19 @@ const metadata = {
 const performanceHubFeatures = [
   {
     title: "Planning tools",
-    text: "Training planning, workout creation and session structure support for riders who want more direction.",
+    text: "Training planning, workout creation and session structure.",
   },
   {
     title: "Workout review",
-    text: "Support for understanding how a single workout went and what to do with the learning afterwards.",
+    text: "Support for understanding how a single workout went.",
   },
   {
     title: "Event preparation",
-    text: "Pacing, fuelling and preparation resources for important races, TTs and endurance events.",
+    text: "Pacing, fuelling and preparation resources for key events.",
   },
   {
     title: "Rider guides",
-    text: "Short practical guides covering racing, pacing, sprinting, climbing and other performance topics.",
+    text: "Short practical guides covering racing, pacing, sprinting, climbing and more.",
   },
 ];
 
@@ -51,19 +51,19 @@ const accreditationPoints = [
 
 const riderGroups = [
   {
-    title: "Road Racing and Crits",
+    title: "Road Racing & Crits",
     text: "Race progression, category improvement, race craft and better preparation.",
   },
   {
-    title: "Time Trial and Pacing",
+    title: "Time Trial & Pacing",
     text: "Improved sustained power, pacing discipline and event execution.",
   },
   {
-    title: "Zwift and eRacing",
+    title: "Zwift & eRacing",
     text: "Support for Zwift, WTRL, ZRL, TTTs, ladder racing and other virtual race formats.",
   },
   {
-    title: "Endurance and Challenge Events",
+    title: "Endurance & Challenge Events",
     text: "Preparation for long-distance events, sportives, fondos, multi-day rides and ultra-style goals.",
   },
   {
@@ -159,78 +159,76 @@ const aiSupport = [
     />
   </ZsunPageHero>
 
-  <ZsunSection
-    eyebrow="Self-serve support"
-    title="ZSUN Performance Hub"
-    lead="The ZSUN Performance Hub brings together practical tools and rider guides designed to help athletes understand their training, prepare for events, review performance and make better decisions."
-  >
-    <div class="zsun-coaching-split">
-      <div class="zsun-coaching-copy">
-        <p class="zsun-support-copy">
+  <section class="zsun-section">
+    <div class="zsun-container coaching-offer-panel performance-panel">
+      <div class="coaching-offer-copy">
+        <span class="zsun-eyebrow">Self-serve support</span>
+        <h2>ZSUN Performance Hub</h2>
+        <p class="zsun-lead">
+          The ZSUN Performance Hub brings together practical tools and rider
+          guides designed to help athletes understand their training, prepare
+          for events, review performance and make better decisions.
+        </p>
+        <p>
           It includes client-side tools for planning, workout review, event
           preparation and rider education, alongside downloadable guides
           covering key cycling performance topics.
         </p>
-        <p class="zsun-support-copy">
+        <p>
           This is the best starting point for riders who want structured
           support, useful resources and practical guidance they can use
           independently.
         </p>
-        <div class="zsun-action-row">
-          <Button
-            text="Open the Performance Hub"
-            href="https://zsun-performance-hub.lalieustewart.workers.dev"
-            variant="primary"
-            target="_blank"
-          />
-        </div>
+        <Button
+          text="Open the Performance Hub"
+          href="https://zsun-performance-hub.lalieustewart.workers.dev"
+          variant="primary"
+          target="_blank"
+        />
       </div>
-
-      <div class="zsun-grid zsun-grid-two">
+      <div class="hub-feature-grid">
         {
           performanceHubFeatures.map((feature) => (
-            <ZsunCard
-              title={feature.title}
-              text={feature.text}
-              class="zsun-detail-card zsun-compact-card"
-            />
+            <article>
+              <strong>{feature.title}</strong>
+              <span>{feature.text}</span>
+            </article>
           ))
         }
       </div>
     </div>
-  </ZsunSection>
+  </section>
 
-  <ZsunSection
-    id="one-to-one-coaching"
-    eyebrow="Human-led coaching"
-    title="1-to-1 Cycling Coaching"
-    lead="Personalised cycling coaching for committed riders who want structure, honest feedback, better decision-making and long-term progression."
-    variant="alt"
-  >
-    <div class="zsun-coaching-service-panel">
-      <div class="zsun-coaching-service-visual">
-        <div class="zsun-coaching-flag-card">
+  <section id="one-to-one-coaching" class="zsun-section zsun-section-alt">
+    <div class="zsun-container coaching-service-panel">
+      <div class="coaching-service-visual">
+        <Image
+          class="coaching-flag"
+          src={coachingFlagImage}
+          alt="ZSUN Coaching flag with ABCC mark"
+          widths={[480, 720, 960]}
+          layout="responsive"
+          style="width:100%;height:auto;object-position:center center;"
+        />
+        <div class="coach-credential">
           <Image
-            src={coachingFlagImage}
-            alt="ZSUN Coaching flag graphic"
-            widths={[480, 720, 960]}
-            layout="responsive"
-            style="width:100%;height:auto;object-position:center center;"
+            src={abccLogoImage}
+            alt="Association of British Cycling Coaches logo"
+            width={92}
+            height={92}
+            layout="fixed"
           />
+          <div>
+            <strong>ABCC Level 3 Cycling Coach</strong>
+            <span>Stewart Lalieu, ZSUN Head Coach</span>
+            <span>
+              <a href="mailto:lalieustewart@gmail.com">
+                lalieustewart@gmail.com
+              </a>
+            </span>
+          </div>
         </div>
-        <div class="zsun-credential-card">
-          <span class="zsun-eyebrow">ABCC Level 3</span>
-          <h3>Stewart Lalieu, ZSUN Head Coach</h3>
-          <p>
-            Advanced cycling coaching focused on structured planning,
-            athlete-specific review and long-term rider development.
-          </p>
-          <a href="mailto:lalieustewart@gmail.com" class="zsun-inline-link">
-            lalieustewart@gmail.com
-          </a>
-        </div>
-
-        <div class="zsun-accreditation-panel">
+        <div class="accreditation-explainer">
           <h3>Why ABCC Level 3 matters</h3>
           <p>
             ABCC Level 3 sits at the advanced end of cycling coaching
@@ -238,7 +236,7 @@ const aiSupport = [
             structured periodised planning, data-informed review and long-term
             rider development.
           </p>
-          <div class="zsun-list-grid">
+          <div class="accreditation-points">
             {
               accreditationPoints.map((item) => (
                 <span>
@@ -250,177 +248,211 @@ const aiSupport = [
           </div>
         </div>
       </div>
-
-      <div class="zsun-coaching-service-copy">
-        <p class="zsun-support-copy">
+      <div class="coaching-service-copy">
+        <span class="zsun-eyebrow">Human-led coaching</span>
+        <h2>1-to-1 Cycling Coaching</h2>
+        <p class="zsun-lead">
+          Personalised cycling coaching for committed riders who want
+          structure, honest feedback, better decision-making and long-term
+          progression.
+        </p>
+        <p>
           Coaching is led by <strong>Stewart Lalieu, ZSUN Head Coach</strong>,
           an ABCC Level 3 cycling coach with experience coaching riders
           internationally across road racing, time trials, Zwift/eRacing,
           endurance events and strength training for cyclists.
         </p>
-        <p class="zsun-support-copy">
+        <p>
           Stewart coaches because he enjoys helping committed riders progress.
           The tone is direct, supportive and honest: the aim is to help riders
           improve, understand their training and become more resilient athletes.
         </p>
-        <div class="zsun-coach-contact">
+        <div class="coach-contact-cta">
           <strong>Discuss individual coaching</strong>
           <span>
             Should you wish to discuss individual training, please reach out to
             Stewart.
           </span>
-          <div class="zsun-action-row">
-            <Button
-              text="Email Stewart"
-              href="mailto:lalieustewart@gmail.com"
-              variant="primary"
-            />
-            <Button
-              text="Open Contact Page"
-              href="/contact"
-              variant="secondary"
-            />
+          <a href="mailto:lalieustewart@gmail.com">
+            lalieustewart@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="zsun-section zsun-section-alt coaching-tabs-section">
+    <div class="zsun-container">
+      <div class="zsun-section-head">
+        <h2>1-to-1 coaching in detail</h2>
+        <p>
+          Explore the coaching approach, what is included, how AI is used,
+          rider outcomes and the clear boundaries of the service.
+        </p>
+      </div>
+
+      <div class="coaching-tabs" data-tabs>
+        <div class="tab-list" role="tablist" aria-label="1-to-1 coaching detail">
+          <button class="tab-button active" role="tab" aria-selected="true" aria-controls="tab-who" id="tab-button-who">
+            Who it is for
+          </button>
+          <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-included" id="tab-button-included">
+            What's included
+          </button>
+          <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-philosophy" id="tab-button-philosophy">
+            How it works
+          </button>
+          <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-outcomes" id="tab-button-outcomes">
+            Rider outcomes
+          </button>
+          <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-ai" id="tab-button-ai">
+            AI-supported
+          </button>
+          <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-boundaries" id="tab-button-boundaries">
+            Boundaries
+          </button>
+        </div>
+
+        <div class="tab-panel active" role="tabpanel" id="tab-who" aria-labelledby="tab-button-who">
+          <div class="coaching-card-grid tabs-card-grid">
+            {
+              riderGroups.map((group) => (
+                <article class="coaching-card">
+                  <h3>{group.title}</h3>
+                  <p>{group.text}</p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="tab-panel" role="tabpanel" id="tab-included" aria-labelledby="tab-button-included" hidden>
+          <div class="tab-two-col">
+            <div>
+              <h3>Structure, feedback and honest accountability.</h3>
+              <p>
+                1-to-1 coaching gives riders a clear training direction,
+                regular review and practical decision-making support around
+                racing, recovery and progression.
+              </p>
+            </div>
+            <div class="coaching-list-grid">
+              {includedItems.map((item) => <span>{item}</span>)}
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" role="tabpanel" id="tab-philosophy" aria-labelledby="tab-button-philosophy" hidden>
+          <div class="tab-two-col">
+            <div>
+              <h3>How the coaching works.</h3>
+              <p>
+                Training should challenge the rider, but it must also fit the
+                person behind the numbers. The aim is not just to improve
+                fitness, but to help riders understand their training, make
+                better decisions and become more resilient athletes.
+              </p>
+            </div>
+            <div class="philosophy-pills">
+              {philosophyPills.map((pill) => <span>{pill}</span>)}
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" role="tabpanel" id="tab-outcomes" aria-labelledby="tab-button-outcomes" hidden>
+          <div class="testimonial-strip testimonial-strip-four">
+            {
+              testimonials.map((item) => (
+                <article>
+                  <span class="testimonial-label">{item.label}</span>
+                  <p>{item.quote}</p>
+                  <strong>{item.name}</strong>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="tab-panel" role="tabpanel" id="tab-ai" aria-labelledby="tab-button-ai" hidden>
+          <div class="tab-two-col">
+            <div>
+              <h3>AI helps the process. It does not replace the coach.</h3>
+              <p>
+                ZSUN Coaching makes selective use of AI to support data review,
+                pattern recognition, planning checks, document creation and
+                rider education.
+              </p>
+              <p>
+                AI can improve the coaching process, but final decisions remain
+                human-led, with Stewart retaining full oversight.
+              </p>
+            </div>
+            <div class="ai-points">
+              {aiSupport.map((item) => <span>{item}</span>)}
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" role="tabpanel" id="tab-boundaries" aria-labelledby="tab-button-boundaries" hidden>
+          <div class="tab-two-col">
+            <div>
+              <h3>Clear scope. Clear responsibilities.</h3>
+              <p>
+                ZSUN Coaching can support training structure, performance
+                development, race preparation, strength training and general
+                fuelling guidance. It does not replace qualified medical,
+                physiotherapy, dietetic, bike-fitting or mechanical services.
+              </p>
+              <p>
+                <strong
+                  >Coaching is only available to athletes aged 18 and over.</strong
+                >
+              </p>
+            </div>
+            <div class="boundary-card">
+              <strong>Ask about 1-to-1 coaching</strong>
+              <span>
+                Use the contact page to discuss whether the coaching approach
+                is the right fit.
+              </span>
+              <Button
+                text="Contact ZSUN Coaching"
+                href="/contact"
+                variant="primary"
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </ZsunSection>
+  </section>
 
-  <ZsunSection
-    eyebrow="Coaching detail"
-    title="1-to-1 coaching in detail"
-    lead="Explore the coaching approach, what is included, how AI is used, rider outcomes and the clear boundaries of the service."
-  >
-    <div class="zsun-detail-stack">
-      <article class="zsun-detail-panel">
-        <div class="zsun-detail-intro">
-          <span class="zsun-card-eyebrow">Who it is for</span>
-          <h3>Built for riders who want tailored support.</h3>
-          <p>
-            The coaching service supports committed cyclists across a range of
-            disciplines, with the common thread being a desire for clearer
-            structure and better decisions.
-          </p>
-        </div>
-        <div class="zsun-grid zsun-grid-three">
-          {
-            riderGroups.map((group) => (
-              <ZsunCard
-                title={group.title}
-                text={group.text}
-                class="zsun-detail-card zsun-compact-card"
-              />
-            ))
-          }
-        </div>
-      </article>
+  <script>
+    document.querySelectorAll("[data-tabs]").forEach((tabs) => {
+      const buttons = Array.from(tabs.querySelectorAll('[role="tab"]'));
+      const panels = Array.from(
+        tabs.querySelectorAll<HTMLElement>('[role="tabpanel"]')
+      );
 
-      <article class="zsun-detail-panel">
-        <div class="zsun-detail-intro">
-          <span class="zsun-card-eyebrow">What is included</span>
-          <h3>Structure, feedback and honest accountability.</h3>
-          <p>
-            1-to-1 coaching gives riders clear training direction, regular
-            review and practical decision-making support around racing, recovery
-            and progression.
-          </p>
-        </div>
-        <div class="zsun-list-grid">
-          {includedItems.map((item) => <span>{item}</span>)}
-        </div>
-      </article>
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const targetId = button.getAttribute("aria-controls");
 
-      <article class="zsun-detail-panel">
-        <div class="zsun-detail-intro">
-          <span class="zsun-card-eyebrow">How it works</span>
-          <h3>Training should fit the rider, not just the spreadsheet.</h3>
-          <p>
-            The aim is not only to improve fitness, but also to help riders
-            understand their training, make better decisions and become more
-            resilient athletes.
-          </p>
-        </div>
-        <div class="zsun-pill-row zsun-pill-cloud">
-          {philosophyPills.map((pill) => <span class="zsun-pill">{pill}</span>)}
-        </div>
-      </article>
+          buttons.forEach((item) => {
+            const selected = item === button;
+            item.classList.toggle("active", selected);
+            item.setAttribute("aria-selected", String(selected));
+          });
 
-      <article class="zsun-detail-panel">
-        <div class="zsun-detail-intro">
-          <span class="zsun-card-eyebrow">Rider outcomes</span>
-          <h3>Progress shows up in different ways for different riders.</h3>
-          <p>
-            ZSUN positions this service around real rider progression,
-            from long-term development to race execution and ultra-distance
-            preparation.
-          </p>
-        </div>
-        <div class="zsun-testimonial-strip">
-          {
-            testimonials.map((item) => (
-              <article class="zsun-quote-card">
-                <span class="zsun-quote-label">{item.label}</span>
-                <p>{item.quote}</p>
-                <strong>{item.name}</strong>
-              </article>
-            ))
-          }
-        </div>
-      </article>
-
-      <article class="zsun-detail-panel">
-        <div class="zsun-detail-intro">
-          <span class="zsun-card-eyebrow">AI-supported</span>
-          <h3>AI helps the process. It does not replace the coach.</h3>
-          <p>
-            ZSUN Coaching makes selective use of AI to support data review,
-            pattern recognition, planning checks, document creation and rider
-            education, while final decisions remain human-led.
-          </p>
-        </div>
-        <div class="zsun-list-grid zsun-list-grid-compact">
-          {aiSupport.map((item) => <span>{item}</span>)}
-        </div>
-      </article>
-
-      <article class="zsun-detail-panel">
-        <div class="zsun-detail-intro">
-          <span class="zsun-card-eyebrow">Boundaries</span>
-          <h3>Clear scope. Clear responsibilities.</h3>
-          <p>
-            ZSUN Coaching can support training structure, performance
-            development, race preparation, strength training and general
-            fuelling guidance. It does not replace qualified medical,
-            physiotherapy, dietetic, bike-fitting or mechanical services.
-          </p>
-          <p>
-            <strong
-              >Coaching is only available to athletes aged 18 and over.</strong
-            >
-          </p>
-        </div>
-        <div class="zsun-boundary-card">
-          <strong>Ask about 1-to-1 coaching</strong>
-          <span>
-            Use the contact page or email Stewart directly to discuss whether
-            the coaching approach is the right fit.
-          </span>
-          <div class="zsun-action-row">
-            <Button
-              text="Contact ZSUN Coaching"
-              href="/contact"
-              variant="primary"
-            />
-            <Button
-              text="Email Stewart"
-              href="mailto:lalieustewart@gmail.com"
-              variant="secondary"
-            />
-          </div>
-        </div>
-      </article>
-    </div>
-  </ZsunSection>
+          panels.forEach((panel) => {
+            const active = panel.id === targetId;
+            panel.classList.toggle("active", active);
+            panel.hidden = !active;
+          });
+        });
+      });
+    });
+  </script>
 
   <ZsunSection variant="alt">
     <ZsunFeatureBand

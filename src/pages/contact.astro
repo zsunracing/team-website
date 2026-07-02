@@ -1,10 +1,7 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
 import Image from "~/components/common/Image.astro";
-import ZsunCard from "~/components/zsun/ZsunCard.astro";
-import ZsunFeatureBand from "~/components/zsun/ZsunFeatureBand.astro";
 import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
-import ZsunSection from "~/components/zsun/ZsunSection.astro";
 import type { CallToAction } from "~/types";
 import contactHeroImage from "~/assets/images/zsun/zsun-base-builder-28.jpg";
 
@@ -15,13 +12,11 @@ const metadata = {
 };
 
 const routeCards: Array<{
-  eyebrow: string;
   title: string;
   text: string;
   action: CallToAction;
 }> = [
   {
-    eyebrow: "Start here",
     title: "Join ZSUN",
     text: "New to ZSUN? Start with the simple Discord and Zwift Club joining steps.",
     action: {
@@ -31,7 +26,6 @@ const routeCards: Array<{
     },
   },
   {
-    eyebrow: "Club rides",
     title: "Social rides",
     text: "Looking for group rides, ride etiquette, Discord communication or weekly events?",
     action: {
@@ -41,7 +35,6 @@ const routeCards: Array<{
     },
   },
   {
-    eyebrow: "Competition",
     title: "Racing",
     text: "For ZRL, WTRL TTT, Ladder League, ZwiftPower and race team guidance.",
     action: {
@@ -51,8 +44,7 @@ const routeCards: Array<{
     },
   },
   {
-    eyebrow: "Performance",
-    title: "Coaching and tools",
+    title: "Coaching & tools",
     text: "For 1-to-1 coaching, the Performance Hub, rider guides and ZSUN Coaching support.",
     action: {
       text: "View coaching support",
@@ -61,7 +53,6 @@ const routeCards: Array<{
     },
   },
   {
-    eyebrow: "Useful links",
     title: "Rider resources",
     text: "Useful club links, racing registration links, performance tools and rider support resources.",
     action: {
@@ -71,7 +62,6 @@ const routeCards: Array<{
     },
   },
   {
-    eyebrow: "General help",
     title: "General club question",
     text: "For most ZSUN questions, Discord is the best place to ask because it gets your question in front of the right riders, captains or organisers.",
     action: {
@@ -115,54 +105,63 @@ const routeCards: Array<{
     />
   </ZsunPageHero>
 
-  <ZsunSection
-    title="Choose your route"
-    lead="Use the page that best matches what you need, and start with Discord when you want the community to point you in the right direction."
-  >
-    <div class="zsun-grid zsun-grid-three">
-      {
-        routeCards.map((card) => (
-          <ZsunCard
-            eyebrow={card.eyebrow}
-            title={card.title}
-            text={card.text}
-            action={card.action}
-            class="zsun-detail-card"
-          />
-        ))
-      }
-    </div>
-  </ZsunSection>
-
-  <ZsunSection variant="alt">
-    <ZsunFeatureBand
-      eyebrow="Discord first"
-      title="Most contact starts inside the community."
-      lead="ZSUN is a rider-led club. Discord keeps ride, race and club conversations visible to the people who can help, rather than hiding useful answers in private messages."
-      pills={[
-        "Social ride comms",
-        "Race organisation",
-        "Team voice",
-        "Rider support",
-      ]}
-      visualLabel="Discord"
-    >
-      <p class="zsun-support-copy">
-        Not sure where to ask? Join Discord first and use the most relevant
-        channel. Riders and organisers can then point you towards social rides,
-        racing, resources or coaching support.
-      </p>
-      <div class="zsun-action-row">
-        <a
-          href="https://zsunr.com/discord"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-primary"
-        >
-          Open Discord
-        </a>
-        <a href="/join" class="btn-secondary">View join steps</a>
+  <section class="zsun-section contact-routes-section">
+    <div class="zsun-container">
+      <div class="zsun-section-head">
+        <div>
+          <span class="zsun-eyebrow">Choose your route</span>
+          <h2>Where should I go?</h2>
+        </div>
       </div>
-    </ZsunFeatureBand>
-  </ZsunSection>
+
+      <div class="zsun-grid zsun-grid-three">
+        {
+          routeCards.map((card) => (
+            <article class="zsun-card zsun-detail-card contact-route-card">
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+              <a
+                href={card.action.href}
+                class="btn-primary btn-small"
+              >
+                {card.action.text}
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="zsun-section zsun-section-alt">
+    <div class="zsun-container">
+      <div class="zsun-feature-band contact-discord-band">
+        <div>
+          <span class="zsun-eyebrow">Discord first</span>
+          <h2>Most contact starts inside the community.</h2>
+          <p class="zsun-lead">
+            ZSUN is a rider-led club. Discord keeps ride, race and club
+            conversations visible to the people who can help, rather than hiding
+            useful answers in private messages.
+          </p>
+          <div class="zsun-pill-row">
+            <span class="zsun-pill">Social ride comms</span>
+            <span class="zsun-pill">Race organisation</span>
+            <span class="zsun-pill">Team voice</span>
+            <span class="zsun-pill">Rider support</span>
+          </div>
+        </div>
+
+        <article class="zsun-card contact-question-card">
+          <h3>Not sure where to ask?</h3>
+          <p>
+            Join Discord first and ask in the most relevant channel. Riders and
+            organisers can then point you towards social rides, racing,
+            resources or coaching support.
+          </p>
+          <a href="/join" class="btn-primary btn-small">Join ZSUN</a>
+        </article>
+      </div>
+    </div>
+  </section>
 </Layout>

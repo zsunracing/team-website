@@ -3,7 +3,6 @@ import Layout from "~/layouts/PageLayout.astro";
 import Image from "~/components/common/Image.astro";
 import Button from "~/components/ui/Button.astro";
 import ZsunCard from "~/components/zsun/ZsunCard.astro";
-import ZsunFeatureBand from "~/components/zsun/ZsunFeatureBand.astro";
 import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
 import ZsunSection from "~/components/zsun/ZsunSection.astro";
 import raceHeroImage from "~/assets/images/zsun/zsun-race-ttt-03.png";
@@ -114,7 +113,6 @@ const results = [
     title: "ZRL",
     text: "Zwift Racing League reports, league tables, team performance and rider-level views where available.",
     href: "/zrl-results",
-    actionText: "Open ZRL page",
   },
   {
     tag: "Club Competition",
@@ -166,16 +164,16 @@ const results = [
     title="How to start racing with ZSUN"
     lead="Join the community first, then use Discord to find the right race, team and registration route."
   >
-    <div class="zsun-pathway">
+    <div class="race-pathway">
       {
         pathway.map((item) => (
-          <article class="zsun-step-card">
-            <span class="zsun-step-number">{item.step}</span>
+          <article class="race-step">
+            <span>{item.step}</span>
             <div>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
               {item.href && (
-                <a href={item.href} class="zsun-inline-link">
+                <a href={item.href} class="text-link">
                   {item.linkText}
                 </a>
               )}
@@ -205,110 +203,112 @@ const results = [
     </div>
   </ZsunSection>
 
-  <ZsunSection
-    id="racing-requirements"
-    eyebrow="Race registration"
-    title="Some races need extra accounts."
-    lead="Zwift Club membership gets you into the community, but racing often needs extra registration depending on the event or league. Use the links below, and ask for help in Discord if anything is unclear."
-  >
-    <div class="zsun-link-list">
-      {
-        registrations.map((registration) => (
-          <a
-            href={registration.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="zsun-link-card"
-          >
-            <strong>{registration.title}</strong>
-            <span>{registration.text}</span>
-          </a>
-        ))
-      }
+  <section class="zsun-section" id="racing-requirements">
+    <div class="zsun-container race-support-panel">
+      <div>
+        <span class="zsun-eyebrow">Race registration</span>
+        <h2>Some races need extra accounts.</h2>
+        <p class="zsun-lead">
+          Zwift Club membership gets you into the community, but racing often
+          needs extra registration depending on the event or league. Use the
+          links below, and ask for help in Discord if anything is unclear.
+        </p>
+      </div>
+      <div class="registration-list">
+        {
+          registrations.map((registration) => (
+            <a
+              href={registration.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="registration-item"
+            >
+              <strong>{registration.title}</strong>
+              <span>{registration.text}</span>
+            </a>
+          ))
+        }
+      </div>
     </div>
-  </ZsunSection>
+  </section>
 
   <ZsunSection variant="alt">
-    <div class="zsun-two-panel">
-      <ZsunCard
-        eyebrow="Team support"
-        title="Captains help racing run properly."
-        text="ZSUN Racing relies on captains, organisers and team communication. They help with team selection, race sign-up, TTT organisation, race-day expectations, rider communication and post-race learning."
-        class="zsun-detail-card"
-      >
-        <p class="zsun-support-copy">
+    <div class="race-two-col">
+      <article class="race-panel">
+        <span class="zsun-eyebrow">Team support</span>
+        <h2>Captains help racing run properly.</h2>
+        <p>
+          ZSUN Racing relies on captains, organisers and team communication.
+          They help with team selection, race sign-up, TTT organisation,
+          race-day expectations, rider communication and post-race learning.
+        </p>
+        <p>
           Use the right Discord channels early. Do not leave race questions
           until the last minute.
         </p>
-        <div class="zsun-action-row">
-          <Button
-            text="Ask in Discord"
-            href="https://zsunr.com/discord"
-            variant="secondary"
-            target="_blank"
-            class="btn-small"
-          />
-        </div>
-      </ZsunCard>
+        <Button
+          text="Ask in Discord"
+          href="https://zsunr.com/discord"
+          variant="primary"
+          target="_blank"
+          class="btn-small"
+        />
+      </article>
 
-      <ZsunCard
-        eyebrow="Fair racing"
-        title="Fair racing is non-negotiable."
-        class="zsun-detail-card"
-      >
-        <ul class="zsun-checklist">
+      <article class="race-panel">
+        <span class="zsun-eyebrow">Fair racing</span>
+        <h2>Fair racing is non-negotiable.</h2>
+        <ul class="race-checklist">
           {fairRacing.map((item) => <li>{item}</li>)}
         </ul>
-      </ZsunCard>
+      </article>
     </div>
   </ZsunSection>
 
-  <ZsunSection
-    title="Race results"
-    lead="Use the dedicated ZRL page for the current dashboard. Other result areas remain informational placeholders while additional result views are still being built."
-  >
-    <div class="zsun-grid zsun-grid-four">
-      {
-        results.map((result) => (
-          <ZsunCard
-            eyebrow={result.tag}
-            title={result.title}
-            text={result.text}
-            class="zsun-detail-card"
-          >
-            <div class="zsun-placeholder-window">
-              <div class="zsun-placeholder-window-copy">
-                <strong>
-                  {result.href ? "Live results" : "Results dashboard"}
-                </strong>
-                <span>
-                  {result.href ? "Dedicated page available" : "Coming later"}
-                </span>
-              </div>
+  <section class="zsun-section race-results-section">
+    <div class="zsun-container">
+      <div class="zsun-section-head">
+        <h2>Race results</h2>
+        <p>
+          Published results windows for the main ZSUN racing activities. Use
+          this section to find the right results area quickly.
+        </p>
+      </div>
+      <div class="results-grid">
+        {
+          results.map((result) => (
+            <article class="results-card">
+              <span class="results-tag">{result.tag}</span>
+              <h3>{result.title}</h3>
+              <p>{result.text}</p>
               {result.href ? (
-                <Button
-                  text={result.actionText}
-                  href={result.href}
-                  variant="secondary"
-                  class="btn-small"
-                />
+                <a class="results-window results-link" href={result.href}>
+                  <strong>Results Dashboard</strong>
+                  <span>Open dashboard</span>
+                </a>
               ) : (
-                <span>Coming later</span>
+                <div class="results-window">
+                  <strong>Results Dashboard</strong>
+                  <span>Coming soon</span>
+                </div>
               )}
-            </div>
-          </ZsunCard>
-        ))
-      }
+            </article>
+          ))
+        }
+      </div>
     </div>
-  </ZsunSection>
+  </section>
 
-  <ZsunSection variant="alt">
-    <ZsunFeatureBand
-      eyebrow="Ready to race?"
-      title="Start with the club, then ask in the racing channels."
-      lead="ZSUN will help you find the right event, understand the registration route and race with the right expectations."
-      visualLabel="Race"
-    >
+  <section class="zsun-section race-final-cta">
+    <div class="zsun-container race-cta-band">
+      <div>
+        <span class="zsun-eyebrow">Ready to race?</span>
+        <h2>Start with the club, then ask in the racing channels.</h2>
+        <p>
+          ZSUN will help you find the right event, understand the registration
+          route and race with the right expectations.
+        </p>
+      </div>
       <div class="zsun-action-row">
         <Button text="Join ZSUN" href="/join" variant="primary" />
         <Button
@@ -318,6 +318,6 @@ const results = [
           target="_blank"
         />
       </div>
-    </ZsunFeatureBand>
-  </ZsunSection>
+    </div>
+  </section>
 </Layout>

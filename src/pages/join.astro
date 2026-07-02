@@ -3,7 +3,6 @@ import Layout from "~/layouts/PageLayout.astro";
 import Image from "~/components/common/Image.astro";
 import Button from "~/components/ui/Button.astro";
 import ZsunPageHero from "~/components/zsun/ZsunPageHero.astro";
-import ZsunSection from "~/components/zsun/ZsunSection.astro";
 import joinHeroImage from "~/assets/images/zsun/join-zsun-community-infographic.png";
 import joinDiscordImage from "~/assets/images/zsun/join-discord.png";
 import joinCompanionSearchImage from "~/assets/images/zsun/join-companion-search.png";
@@ -45,111 +44,107 @@ const clubSteps = [
       },
       { text: "View club rides", href: "/ride", variant: "secondary" },
     ]}
-    class="zsun-page-hero-with-visual"
+    class="zsun-page-hero-with-visual join-hero"
   >
     <Image
       slot="visual"
       src={joinHeroImage}
       alt=""
-      class="zsun-page-hero-image"
+      class="zsun-page-hero-image join-hero-image"
       widths={[480, 720, 960, 1280]}
-      layout="cover"
-      style="object-position:center center;"
+      layout="responsive"
+      style="object-fit:contain;object-position:center;"
     />
   </ZsunPageHero>
 
-  <ZsunSection id="join-options" title="Two simple joining steps">
-    <div class="zsun-join-grid">
-      <article class="zsun-join-card">
-        <div class="zsun-join-media zsun-join-media-discord">
-          <div
-            class="zsun-join-screenshot-frame zsun-join-screenshot-frame-desktop"
-          >
+  <section class="zsun-section" id="join-options">
+    <div class="zsun-container">
+      <div class="zsun-section-head">
+        <h2>Two simple joining steps</h2>
+      </div>
+
+      <div class="join-grid">
+        <article class="join-card">
+          <div class="join-card-media desktop-frame">
             <Image
               src={joinDiscordImage}
               alt="ZSUN Discord server showing welcome and account setup channels"
               widths={[480, 720, 960]}
-              layout="cover"
-              style="width:100%;height:100%;object-position:center top;"
+              layout="responsive"
+              style="object-fit:cover;object-position:top center;"
             />
           </div>
-        </div>
-        <div class="zsun-join-body">
-          <span class="zsun-eyebrow">Communication</span>
-          <h3>Join our communication service</h3>
-          <p>
-            Discord is where ZSUN communicates during and around club activity.
-            It is easy to sign up and only takes a few minutes.
-          </p>
-          <ul class="zsun-checklist">
-            {discordBenefits.map((benefit) => <li>{benefit}</li>)}
-          </ul>
-          <p class="zsun-join-note">
-            If you are new, you can simply join and listen. Many riders start
-            there before joining in.
-          </p>
-          <div class="zsun-action-row">
-            <Button
-              text="Join our communication service"
-              href="https://zsunr.com/discord"
-              variant="primary"
-              target="_blank"
-            />
+          <div class="join-card-body">
+            <span class="zsun-eyebrow">Communication</span>
+            <h3>Join our communication service</h3>
+            <p>
+              Discord is where ZSUN communicates during and around club
+              activity. It is easy to sign up and only takes a few minutes.
+            </p>
+            <ul class="join-list">
+              {discordBenefits.map((benefit) => <li>{benefit}</li>)}
+            </ul>
+            <p class="join-note">
+              If you are new, you can simply join and listen. Many riders start
+              there before joining in.
+            </p>
+            <div class="join-actions">
+              <Button
+                text="Join our communication service"
+                href="https://zsunr.com/discord"
+                variant="primary"
+                target="_blank"
+              />
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <article class="zsun-join-card">
-        <div class="zsun-join-media zsun-join-media-club">
-          <div class="zsun-join-screenshot-pair">
-            <div
-              class="zsun-join-screenshot-frame zsun-join-screenshot-frame-phone"
-            >
+        <article class="join-card companion-card">
+          <div class="join-card-media companion-steps">
+            <figure>
               <Image
                 src={joinCompanionSearchImage}
                 alt="Zwift Companion app showing the Clubs page with ZSUN entered into the search box"
                 widths={[320, 480, 640]}
-                layout="cover"
-                style="width:100%;height:100%;object-position:center top;"
+                layout="responsive"
+                style="object-fit:contain;object-position:top center;"
               />
-            </div>
-            <div
-              class="zsun-join-screenshot-frame zsun-join-screenshot-frame-phone"
-            >
+            </figure>
+            <figure>
               <Image
                 src={joinCompanionResultImage}
                 alt="Zwift Companion app showing the ZSUN club result after searching in the Clubs section"
                 widths={[320, 480, 640]}
-                layout="cover"
-                style="width:100%;height:100%;object-position:center top;"
+                layout="responsive"
+                style="object-fit:contain;object-position:top center;"
               />
-            </div>
+            </figure>
           </div>
-        </div>
-        <div class="zsun-join-body">
-          <span class="zsun-eyebrow">Zwift Club</span>
-          <h3>Join our Zwift Club via the Companion app</h3>
-          <p>
-            Join the ZSUN club through the Zwift Companion app on your mobile
-            device. This is the simplest way to connect yourself to the club
-            inside the Zwift ecosystem and makes it easier to find ZSUN
-            activity.
-          </p>
-          <ol class="zsun-number-list">
-            {clubSteps.map((step) => <li>{step}</li>)}
-          </ol>
-          <p class="zsun-join-note">
-            Once you have joined, the club becomes easier to find inside
-            Companion and links your mobile app view to the wider ZSUN club
-            presence in Zwift.
-          </p>
-        </div>
-      </article>
+          <div class="join-card-body">
+            <span class="zsun-eyebrow">Zwift Club</span>
+            <h3>Join our Zwift Club via the Companion app</h3>
+            <p>
+              Join the ZSUN club through the Zwift Companion app on your mobile
+              device. This is the simplest way to connect yourself to the club
+              inside the Zwift ecosystem and makes it easier to find ZSUN
+              activity.
+            </p>
+            <ul class="join-list">
+              {clubSteps.map((step) => <li>{step}</li>)}
+            </ul>
+            <p class="join-note">
+              Once you have joined, the club becomes easier to find inside
+              Companion and links your mobile app view to the wider ZSUN club
+              presence in Zwift.
+            </p>
+          </div>
+        </article>
+      </div>
     </div>
-  </ZsunSection>
+  </section>
 
-  <ZsunSection variant="alt">
-    <div class="zsun-join-support">
+  <section class="zsun-section zsun-section-alt">
+    <div class="zsun-container join-support-band">
       <div>
         <span class="zsun-eyebrow">Racing next steps</span>
         <h2>Racing registrations come later</h2>
@@ -164,12 +159,10 @@ const clubSteps = [
           point.
         </p>
       </div>
-      <aside class="zsun-callout-card">
-        <strong>Not sure where to start?</strong>
-        <p>
-          Join Discord first and ask. We'll point you in the right direction.
-        </p>
+      <aside class="notice join-notice">
+        <strong>Not sure where to start?</strong> Join Discord first and ask.
+        We'll point you in the right direction.
       </aside>
     </div>
-  </ZsunSection>
+  </section>
 </Layout>

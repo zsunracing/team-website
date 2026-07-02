@@ -195,23 +195,31 @@ const seasonalRides = ["Wendurance", "Sunday Sundae", "Base Builder"];
     </div>
   </ZsunSection>
 
-  <ZsunSection
-    eyebrow="What to expect"
-    title="Group riding works best when everyone understands the basics."
-    lead="ZSUN rides are friendly, but each ride has its own purpose. Read the event description, respect the advertised pace and use Discord if you want live chat or help before you ride."
-  >
-    <div class="zsun-grid zsun-grid-three">
-      {
-        expectations.map((expectation) => (
-          <ZsunCard
-            title={expectation.title}
-            text={expectation.text}
-            class="zsun-detail-card zsun-compact-card"
-          />
-        ))
-      }
+  <section class="zsun-section ride-expect-section">
+    <div class="zsun-container">
+      <div class="ride-expect-panel">
+        <div class="ride-expect-copy">
+          <span class="zsun-eyebrow">What to expect</span>
+          <h2>Group riding works best when everyone understands the basics.</h2>
+          <p>
+            ZSUN rides are friendly, but each ride has its own purpose. Read
+            the event description, respect the advertised pace and use Discord
+            if you want live chat or help before you ride.
+          </p>
+        </div>
+        <div class="ride-expect-grid">
+          {
+            expectations.map((expectation) => (
+              <article class="ride-expect-card">
+                <strong>{expectation.title}</strong>
+                <span>{expectation.text}</span>
+              </article>
+            ))
+          }
+        </div>
+      </div>
     </div>
-  </ZsunSection>
+  </section>
 
   <ZsunSection variant="alt">
     <ZsunFeatureBand
@@ -244,32 +252,38 @@ const seasonalRides = ["Wendurance", "Sunday Sundae", "Base Builder"];
     </ZsunFeatureBand>
   </ZsunSection>
 
-  <ZsunSection
-    eyebrow="Seasonal rides"
-    title="Winter rides to look out for"
-    lead="ZSUN also runs seasonal rides through the winter period, typically from October or November through to March or April. Check the live event listings and Discord for current times and availability."
-  >
-    <div class="zsun-seasonal-band">
-      <p>
-        Seasonal favourites regularly include <strong>Wendurance</strong>, <strong
-          >Sunday Sundae</strong
-        > and <strong>Base Builder</strong>, giving riders a dependable winter
-        rhythm when outdoor riding gets harder.
-      </p>
-      <div class="zsun-seasonal-list">
-        {seasonalRides.map((ride) => <span>{ride}</span>)}
+  <section class="zsun-section">
+    <div class="zsun-container">
+      <div class="zsun-seasonal-band">
+        <div class="ride-season-copy">
+          <span class="zsun-eyebrow">Seasonal rides</span>
+          <h2>Winter rides to look out for</h2>
+          <p>
+            ZSUN also runs seasonal rides through the winter period, typically
+            from October or November through to March or April. These include
+            <strong>Wendurance</strong>, <strong>Sunday Sundae</strong> and
+            <strong>Base Builder</strong>. Check the live event listings and
+            Discord for current times and availability.
+          </p>
+        </div>
+        <div class="zsun-seasonal-list">
+          {seasonalRides.map((ride) => <span>{ride}</span>)}
+        </div>
       </div>
     </div>
-  </ZsunSection>
+  </section>
 
   <ZsunSection variant="alt">
-    <ZsunFeatureBand
-      eyebrow="Start riding"
-      title="Ready to find your next ZSUN ride?"
-      lead="Join the club, check the weekly events and use Discord if you want guidance before your first ride."
-      visualLabel="Ride"
-    >
-      <div class="zsun-action-row">
+    <div class="ride-final-cta">
+      <div class="ride-final-cta-copy">
+        <span class="zsun-eyebrow">Start riding</span>
+        <h2>Ready to find your next ZSUN ride?</h2>
+        <p>
+          Join the club, check the weekly events and use Discord if you want
+          guidance before your first ride.
+        </p>
+      </div>
+      <div class="zsun-action-row ride-final-cta-actions">
         <Button text="Join ZSUN" href="/join" variant="primary" />
         <Button
           text="View weekly events"
@@ -278,6 +292,6 @@ const seasonalRides = ["Wendurance", "Sunday Sundae", "Base Builder"];
           target="_blank"
         />
       </div>
-    </ZsunFeatureBand>
+    </div>
   </ZsunSection>
 </Layout>
